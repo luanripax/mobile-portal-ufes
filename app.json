@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "mobile-portal-ufes",
+    "slug": "mobile-portal-ufes",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "mobile-portal-ufes"
+}

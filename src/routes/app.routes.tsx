@@ -14,12 +14,10 @@ export function AppRoutes() {
         <Navigator
             screenOptions={{
                 headerShown: false,
-                tabBarActiveTintColor: '#A949C1',
+                tabBarActiveTintColor: '#7289da',
                 tabBarInactiveTintColor: 'grey',
                 tabBarStyle: {
-                    paddingVertical: Platform.OS === 'ios' ? 20 : 5,
-                    backgroundColor: '#252525',
-                    paddingBottom: 3
+                    backgroundColor: '#23272a',
                 }
             }}
         >

@@ -17,7 +17,9 @@ export function AppRoutes() {
                 tabBarActiveTintColor: '#7289da',
                 tabBarInactiveTintColor: 'grey',
                 tabBarStyle: {
-                    backgroundColor: '#23272a',
+                    //backgroundColor: '#23272a',
+                    backgroundColor: '#1C1C1C',
+                    borderTopWidth: 0
                 }
             }}
         >

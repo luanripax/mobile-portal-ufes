@@ -2,10 +2,14 @@ import React from "react";
 
 import { Container, Title } from './styles';
 
-export function Header() {
+interface Props {
+    title: string;
+}
+
+export function Header({title, ...props}: Props) {
     return(
-        <Container>
-            <Title>Home</Title>
+        <Container {...props}>
+            <Title>{title}</Title>
         </Container>
     );
 }

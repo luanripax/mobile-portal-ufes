@@ -11,8 +11,6 @@ export const Container = styled.View`
 export const Header = styled.View`
     background-color: ${({theme}) => theme.colors.dark.background_secondary};
     height: ${RFValue(180)}px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
     /* superior | direita | inferior | esquerda */
     padding: 50px 20px 0px 20px;
     /*ios: padding: 100px 20px 0px 20px; */
@@ -29,6 +27,7 @@ export const PersonalInfo = styled.View`
     align-items: center;
     justify-content: space-between;
     padding-bottom: 15px;
+    margin-top: ${getBottomSpace()}px;
 `;
 
 export const Icon = styled(Feather)`
@@ -53,12 +52,13 @@ export const Course = styled.Text`
 
 export const ImportantInfo = styled.View`
     padding: 20px 20px;
-
 `;
 
 export const ImportantLabel = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
+    font-size: ${RFValue(18)}px;
     color: white;
+    margin-bottom: 10px;
 `;
 
 export const BoardInfo = styled.View`
@@ -67,6 +67,7 @@ export const BoardInfo = styled.View`
 
 export const BoardLabel = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
+    font-size: ${RFValue(18)}px;
     color: white;
 `;
 

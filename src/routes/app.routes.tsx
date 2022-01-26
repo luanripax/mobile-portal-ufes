@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Home } from "../screens/Home";
+import { Documents } from "../screens/Documents";
 
 const { Navigator, Screen} = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ export function AppRoutes() {
 
             <Screen
                 name="Documentos"
-                component={Home}
+                component={Documents}
                 options={{
                     tabBarIcon: (({size, color}) => (
                         <MaterialCommunityIcons

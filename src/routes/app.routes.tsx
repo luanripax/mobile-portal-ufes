@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Home } from "../screens/Home";
 import { Documents } from "../screens/Documents";
+import { Feed } from '../screens/Feed';
+import  Login  from "../screens/Login/Login";
 
 const { Navigator, Screen} = createBottomTabNavigator();
 
@@ -26,8 +28,9 @@ export function AppRoutes() {
         >
             <Screen
                 name="Início"
-                component={Home}
+                component={Login}
                 options={{
+                    tabBarStyle:{display: 'none'},
                     tabBarIcon: (({size, color}) => (
                         <MaterialIcons 
                             name="home"
@@ -54,7 +57,7 @@ export function AppRoutes() {
 
             <Screen
                 name="Notícias"
-                component={Home}
+                component={Feed}
                 options={{
                     tabBarIcon: (({size, color}) => (
                         <MaterialIcons

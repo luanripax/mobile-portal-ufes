@@ -43,6 +43,7 @@ export function Documents() {
                     data={DATA}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
+                    scrollEnabled={false}
                 />
             </ContentWrapper>
             

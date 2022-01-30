@@ -17,7 +17,7 @@ export const Title = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: 15px;
     color: grey;
-    margin-left: 15px;
+    margin-left: 20px;
 `;
 
 export const Icon = styled(Feather)`

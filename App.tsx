@@ -10,7 +10,10 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 
 import { AppRoutes } from './src/routes/app.routes';
+import Login from './src/screens/Login';
 import theme from './src/styles/theme';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
 export default function App() {
 
@@ -23,10 +26,25 @@ export default function App() {
     return <AppLoading />
   }
 
+  const Stack = createStackNavigator();
+
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <AppRoutes />
+        <Stack.Navigator initialRouteName='Login' screenOptions={
+          {...TransitionPresets.SlideFromRightIOS}
+        }>
+          <Stack.Screen 
+            name="Login" 
+            component={Login} 
+            options={{ headerShown: false}}
+          />
+          <Stack.Screen 
+            name="Routes" 
+            component={AppRoutes} 
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
     

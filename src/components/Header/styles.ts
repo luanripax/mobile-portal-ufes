@@ -15,5 +15,5 @@ export const Container = styled.View`
 export const Title = styled.Text`
     color: #ffffff;
     font-size: ${RFValue(20)}px;
-    margin-top: ${getBottomSpace()/2};
+    margin-top: ${getBottomSpace()/2}px;
 `;

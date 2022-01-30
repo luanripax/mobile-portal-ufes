@@ -7,6 +7,7 @@ import { FormLogin } from './formValues';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { initialValues } from "./formValues";
 import { validationSchema } from "./validationSchema";
+import { useNavigation } from "@react-navigation/native";
 import {
     Container, 
     Title, 
@@ -18,11 +19,13 @@ import {
     ButtonLabel
 } from './styles';
 
-const Login: React.FC = ({
-  }) => {
+const Login: React.FC = () => {
+
+    const navigation = useNavigation();
 
     const onSubmit = (values:FormLogin) => {
         console.log(values);
+        navigation.navigate('Routes');
     }
 
     return(

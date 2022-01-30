@@ -28,9 +28,9 @@ export function AppRoutes() {
         >
             <Screen
                 name="Início"
-                component={Login}
+                component={Home}
                 options={{
-                    tabBarStyle:{display: 'none'},
+                    //tabBarStyle:{display: 'none'},
                     tabBarIcon: (({size, color}) => (
                         <MaterialIcons 
                             name="home"

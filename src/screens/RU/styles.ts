@@ -43,4 +43,8 @@ export const BalanceRecharge = styled(Feather)`
     color: grey
 `;
 
-export const MenuWrapper = styled.View``;
+export const MenuWrapper = styled.View`
+    flex: 1;
+    margin-top: 10px;
+    border-radius: 5px;
+`;

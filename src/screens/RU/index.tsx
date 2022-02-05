@@ -1,6 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Linking, View, Text } from 'react-native';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+import {
+  TouchableOpacity,
+  Linking,
+  View,
+  Text,
+  ScrollView
+} from 'react-native';
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
+import { MenuCard } from '../../components/MenuCard';
 import {
   Container,
   MainHeader,
@@ -49,9 +56,11 @@ export function RU() {
         </BalanceHeader>
         <Balance>R$ 100,00</Balance>
       </BalanceWrapper>
-      <MenuWrapper>
-        <Carousel data={data} renderItem={render} windowSize={100} />
-      </MenuWrapper>
+      <ScrollView>
+        <MenuWrapper>
+          <MenuCard />
+        </MenuWrapper>
+      </ScrollView>
     </Container>
   );
 }

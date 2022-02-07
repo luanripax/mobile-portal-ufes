@@ -3,8 +3,6 @@ import { Formik, FormikProps } from 'formik';
 import {
   Container,
   Title,
-  InputText,
-  Error,
   MenuItems,
   Item,
   ItemLabel,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, Platform, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -16,10 +16,14 @@ import {
   Logout,
   LogoutLabel,
   SwitchButton,
-  DropDown
+  DropDown,
+  Value,
+  ValueTitle,
+  Icon
 } from './styles';
+import { useSetting } from '../../hooks/settings';
 
-export function Settings() {
+export function Settings({ navigation, route }) {
   const render = ({ item, index }) => {
     return (
       <View>
@@ -31,21 +35,37 @@ export function Settings() {
     );
   };
 
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
+  const [isDark, setIsDark] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
+  const { appTheme, idiom, allowNotify, setAllowNotify } = useSetting();
   const [items, setItems] = useState([
     { label: 'Escuro', value: 'apple' },
     { label: 'Claro', value: 'banana' }
   ]);
 
+  const toggleTheme = () => {
+    setIsDark((oldstate) => !oldstate);
+  };
+
   const handleLogout = () => {
+    //navigation.setOptions({ state: isDark, toggle: toggleTheme });
+    //wconsole.log(route);
     navigation.navigate('Login');
   };
+
+  const handleChangeSwitch = (value: boolean) => {
+    console.log(value);
+    setAllowNotify(value);
+  };
+
+  const toggleSwitch = () => setAllowNotify((previousState) => !previousState);
 
   return (
     <Container>
       <MainHeader title="Configurações" />
+      {/*
       <DropDownPicker
         open={open}
         value={value}
@@ -84,19 +104,42 @@ export function Settings() {
         tickIconStyle={{
           display: 'none'
         }}
-      />
+      />*/}
       <SettingsWrapper>
         <Setting>
           <Label>Tema</Label>
+          <Value
+            onPress={() =>
+              navigation.navigate('SelectScreen', {
+                title: 'Tema',
+                type: 'theme'
+              })
+            }
+          >
+            <ValueTitle>{appTheme}</ValueTitle>
+            <Icon name="chevron-right" />
+          </Value>
         </Setting>
         <Separator />
         <Setting>
           <Label>Idioma</Label>
+          <Value>
+            <ValueTitle>{idiom}</ValueTitle>
+            <Icon name="chevron-right" />
+          </Value>
         </Setting>
         <Separator />
         <Setting>
           <Label>Notificações</Label>
-          {Platform.OS === 'ios' ? <Switch /> : <SwitchButton />}
+          {Platform.OS === 'ios' ? (
+            <Switch value={allowNotify} onValueChange={toggleSwitch} />
+          ) : (
+            <SwitchButton value={allowNotify} onValueChange={toggleSwitch} />
+          )}
+        </Setting>
+        <Separator />
+        <Setting>
+          <Label>Sobre</Label>
         </Setting>
       </SettingsWrapper>
       <Logout onPress={handleLogout}>

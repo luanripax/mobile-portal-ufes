@@ -17,7 +17,7 @@ export const MainHeader = styled(StackHeader)`
     margin-bottom: ${hp(1.4)}px;
 `;
 
-export const Setting = styled.View`
+export const Setting = styled.TouchableOpacity`
     background-color: ${({ theme }) => theme.colors.dark.background_secondary};
     width: 100%;
     flex-direction: row;
@@ -58,7 +58,7 @@ export const LogoutLabel = styled.Text`
 `;
 
 export const SwitchButton = styled(Switch)`
-    height: 5px;
+    height: 0px;
 `;
 
 export const DropDown = styled(DropDownPicker).attrs({
@@ -77,7 +77,7 @@ export const ValueTitle = styled.Text`
 `;
 
 export const Icon = styled(Feather)`
-    color: grey;
+    color: ${({ theme }) => theme.colors.dark.success};
     font-size: ${hp(2.4)}px;
     margin-top: ${hp(0.2)}px;
     margin-left: ${wp(2)}px;

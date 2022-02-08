@@ -18,13 +18,11 @@ import {
   BoardLabel
 } from './styles';
 
-export function Home() {
+export function Home({ navigation }) {
   const data = {
     labels: ['Optativas', 'Obrigatórias', 'Total'], // optional
     data: [0.8, 0.6, 0.4]
   };
-
-  const navigation = useNavigation();
 
   const handleNavigate = () => {
     navigation.navigate('Settings');

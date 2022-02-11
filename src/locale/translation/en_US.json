@@ -1,0 +1,21 @@
+{
+    "general": {
+        "greetings": "Hello"
+    },
+    "settings": {
+        "title": "Settings",
+        "theme": "Theme",
+        "idiom": "Idiom",
+        "notification": "Notification",
+        "about": "About",
+        "leave": "Logout"
+    },
+    "themes" :{
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "idioms": {
+        "pt_BR": "Portuguese",
+        "en_US": "English"
+    }
+}

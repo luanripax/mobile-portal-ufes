@@ -8,7 +8,7 @@ interface SettingProviderProps {
 
 function SettingProvider({ children }: SettingProviderProps) {
   const [appTheme, setAppTheme] = useState('dark');
-  const [idiom, setIdiom] = useState('pt-br');
+  const [idiom, setIdiom] = useState('en_US');
   const [allowNotify, setAllowNotify] = useState(true);
 
   return (

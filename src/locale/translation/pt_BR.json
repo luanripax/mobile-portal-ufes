@@ -1,0 +1,21 @@
+{
+    "general": {
+        "greetings": "Olá"
+    },
+    "settings": {
+        "title": "Configurações",
+        "theme": "Tema",
+        "idiom": "Idioma",
+        "notification": "Notificações",
+        "about": "Sobre",
+        "leave": "Sair"
+    },
+    "themes" :{
+        "dark": "Escuro",
+        "light": "Claro"
+    },
+    "idioms": {
+        "pt_BR": "Português",
+        "en_US": "Inglês"
+    }
+}

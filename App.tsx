@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { locale } from './src/locale';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 import {
@@ -8,7 +9,7 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import { NavigationContainer } from '@react-navigation/native';
-
+import { Locale } from './src/locale';
 import { AppRoutes } from './src/routes/app.routes';
 import Login from './src/screens/Login';
 import { Settings } from './src/screens/Settings';
@@ -31,15 +32,19 @@ export default function App() {
     return <AppLoading />;
   }
 
+  console.log(locale('general.greetings'));
   const Stack = createStackNavigator();
 
   return (
     <ThemeProvider theme={theme}>
       <SettingProvider>
-        <NavigationContainer>
+        <NavigationContainer theme={{ colors: { background: '#000' } }}>
           <Stack.Navigator
             initialRouteName="Login"
-            screenOptions={{ ...TransitionPresets.SlideFromRightIOS }}
+            screenOptions={{
+              cardStyle: { backgroundColor: 'transparent' },
+              ...TransitionPresets.SlideFromRightIOS
+            }}
           >
             <Stack.Screen
               name="Login"
@@ -63,6 +68,7 @@ export default function App() {
             />
           </Stack.Navigator>
         </NavigationContainer>
+        <Locale />
       </SettingProvider>
     </ThemeProvider>
   );

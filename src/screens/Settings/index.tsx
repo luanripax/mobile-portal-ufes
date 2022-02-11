@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, Platform, Switch } from 'react-native';
+import { locale } from '../../locale';
 import { useNavigation } from '@react-navigation/native';
 import {
   widthPercentageToDP as wp,
@@ -39,15 +40,8 @@ export function Settings({ navigation, route }) {
   const [isDark, setIsDark] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
+  const [update, setUpdate] = useState(false);
   const { appTheme, idiom, allowNotify, setAllowNotify } = useSetting();
-  const [items, setItems] = useState([
-    { label: 'Escuro', value: 'apple' },
-    { label: 'Claro', value: 'banana' }
-  ]);
-
-  const toggleTheme = () => {
-    setIsDark((oldstate) => !oldstate);
-  };
 
   const handleLogout = () => {
     //navigation.setOptions({ state: isDark, toggle: toggleTheme });
@@ -55,16 +49,20 @@ export function Settings({ navigation, route }) {
     navigation.navigate('Login');
   };
 
-  const handleChangeSwitch = (value: boolean) => {
-    console.log(value);
-    setAllowNotify(value);
-  };
-
   const toggleSwitch = () => setAllowNotify((previousState) => !previousState);
+
+  const themeName =
+    appTheme === 'dark' ? locale('themes.dark') : locale('themes.light');
+  const idiomName =
+    idiom === 'en_US' ? locale('idioms.en_US') : locale('idioms.pt_BR');
+
+  useEffect(() => {
+    setUpdate((old) => !old);
+  }, [appTheme, idiom]);
 
   return (
     <Container>
-      <MainHeader title="Configurações" />
+      <MainHeader title={locale('settings.title')} />
       {/*
       <DropDownPicker
         open={open}
@@ -107,30 +105,37 @@ export function Settings({ navigation, route }) {
       />*/}
       <SettingsWrapper>
         <Setting>
-          <Label>Tema</Label>
+          <Label>{locale('settings.theme')}</Label>
           <Value
             onPress={() =>
               navigation.navigate('SelectScreen', {
-                title: 'Tema',
+                title: locale('settings.theme'),
                 type: 'theme'
               })
             }
           >
-            <ValueTitle>{appTheme}</ValueTitle>
+            <ValueTitle>{themeName}</ValueTitle>
             <Icon name="chevron-right" />
           </Value>
         </Setting>
         <Separator />
         <Setting>
-          <Label>Idioma</Label>
-          <Value>
-            <ValueTitle>{idiom}</ValueTitle>
+          <Label>{locale('settings.idiom')}</Label>
+          <Value
+            onPress={() =>
+              navigation.navigate('SelectScreen', {
+                title: locale('settings.idiom'),
+                type: 'idiom'
+              })
+            }
+          >
+            <ValueTitle>{idiomName}</ValueTitle>
             <Icon name="chevron-right" />
           </Value>
         </Setting>
         <Separator />
         <Setting>
-          <Label>Notificações</Label>
+          <Label>{locale('settings.notification')}</Label>
           {Platform.OS === 'ios' ? (
             <Switch value={allowNotify} onValueChange={toggleSwitch} />
           ) : (
@@ -139,11 +144,11 @@ export function Settings({ navigation, route }) {
         </Setting>
         <Separator />
         <Setting>
-          <Label>Sobre</Label>
+          <Label>{locale('settings.about')}</Label>
         </Setting>
       </SettingsWrapper>
       <Logout onPress={handleLogout}>
-        <LogoutLabel>Sair</LogoutLabel>
+        <LogoutLabel>{locale('settings.leave')}</LogoutLabel>
       </Logout>
     </Container>
   );

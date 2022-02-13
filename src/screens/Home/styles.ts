@@ -62,7 +62,7 @@ export const ImportantLabel = styled.Text`
 `;
 
 export const BoardInfo = styled.View`
-    padding-left: 20px;
+    padding-horizontal: 20px;
 `;
 
 export const BoardLabel = styled.Text`

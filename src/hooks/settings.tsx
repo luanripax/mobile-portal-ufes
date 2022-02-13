@@ -1,6 +1,17 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useState,
+  SetStateAction,
+  Dispatch
+} from 'react';
 
-const SettingContext = createContext({});
+const SettingContext = createContext({
+  idiom: 'en_US',
+  appTheme: 'dark',
+  allowNotify: true
+});
 
 interface SettingProviderProps {
   children: ReactNode;

@@ -14,6 +14,7 @@ import { AppRoutes } from './src/routes/app.routes';
 import Login from './src/screens/Login';
 import { Settings } from './src/screens/Settings';
 import { SelectScreen } from './src/components/SelectScreen';
+import { DocumentSelect } from './src/components/DocumentSelect';
 import theme from './src/styles/theme';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
@@ -59,6 +60,11 @@ export default function App() {
             <Stack.Screen
               name="SelectScreen"
               component={SelectScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="DocumentSelect"
+              component={DocumentSelect}
               options={{ headerShown: false }}
             />
             <Stack.Screen

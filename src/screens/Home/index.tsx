@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar, TouchableOpacity } from 'react-native';
 import CategoryButton from '../../components/CategoryButton';
+import { SubjectCard } from '../../components/SubjectCard';
 import { NavigationAction, useNavigation } from '@react-navigation/native';
 import { ProgressChart } from 'react-native-chart-kit';
 import {
@@ -56,7 +57,8 @@ export function Home({ navigation }) {
 
       <BoardInfo>
         <BoardLabel>Progresso</BoardLabel>
-        <ProgressChart
+        <SubjectCard />
+        {/*<ProgressChart
           data={data}
           width={450}
           height={220}
@@ -73,7 +75,7 @@ export function Home({ navigation }) {
             marginVertical: 25,
             right: 80
           }}
-        />
+        />*/}
       </BoardInfo>
     </Container>
   );

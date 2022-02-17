@@ -18,10 +18,13 @@ export function getDeviceIdiom() {
 export const locale = (word: string) => {
   const [index, subindex] = word.split('.');
   const currentIdiom = getDeviceIdiom();
-  for (var key in currentIdiom)
-    if (key === index)
-      for (var subkey in currentIdiom[index])
-        if (subkey === subindex) return currentIdiom[key][subkey];
+  if (currentIdiom) {
+    const key = Object.keys(currentIdiom).find((key) => key === index);
+    const subKey = Object.keys(currentIdiom[index]).find(
+      (key) => key === subindex
+    );
+    return currentIdiom[key][subKey];
+  }
   return word;
 };
 

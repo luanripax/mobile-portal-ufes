@@ -45,11 +45,17 @@ export function DocumentSelect({ navigation, route }) {
   ]);
 
   const [open2, setOpen2] = useState(false);
-  const [value2, setValue2] = useState('apple');
+  const [value2, setValue2] = useState('history');
   const [items2, setItems2] = useState([
-    { label: 'Oferta do seu curso', value: 'apple' },
-    { label: 'Grade de oferta', value: 'banana' },
-    { label: 'Oferta de outros cursos', value: 'apple2' }
+    { label: 'Histórico parcial', value: 'history' },
+    { label: 'Grade Horário Individual', value: 'schedule' },
+    { label: 'Currículo de cursos', value: 'curriculum' },
+    { label: 'Comprovante de matrícula provisório', value: 'temp' },
+    { label: 'Ficha Cadastral do Aluno', value: 'register-file' },
+    { label: 'Integralização curricular', value: 'integral' },
+    { label: 'Comprovante de solicitação', value: 'receipt' },
+    { label: 'Atestado de Matrícula', value: 'certificate' },
+    { label: 'Atestado de Reconhecimento', value: 'recognize-certificate' }
   ]);
 
   const changeTheme = (theme: string) => {
@@ -67,6 +73,10 @@ export function DocumentSelect({ navigation, route }) {
   const isDark = appTheme === 'dark';
   const isEnglish = idiom === 'en_US';
 
+  const handlePress = () => {
+    console.log('pressed');
+  };
+
   return (
     <>
       <If condition={tag === 'offer'}>
@@ -77,6 +87,7 @@ export function DocumentSelect({ navigation, route }) {
             <View>
               <DropDown
                 title="Tipo de oferta"
+                maxHeight={85}
                 open={open}
                 value={value}
                 items={items}
@@ -84,8 +95,69 @@ export function DocumentSelect({ navigation, route }) {
                 setValue={setValue}
                 setItems={setItems}
               />
+              <If condition={value === 'apple3'}>
+                <DropDown
+                  title="Curso"
+                  maxHeight={85}
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={setValue}
+                  setItems={setItems}
+                />
+              </If>
+              <If condition={value === 'apple4'}>
+                <DropDown
+                  title="Disciplina"
+                  maxHeight={85}
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={setValue}
+                  setItems={setItems}
+                />
+              </If>
+              <If condition={value === 'apple5'}>
+                <DropDown
+                  title="Departamento"
+                  maxHeight={85}
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={setValue}
+                  setItems={setItems}
+                />
+              </If>
             </View>
             <Button title="Visualizar PDF" color="#b51b28" />
+          </BodyWrapper>
+        </Container>
+      </If>
+      <If condition={tag === 'report'}>
+        <Container>
+          <MainHeader title="Oferta - 2022/1" />
+
+          <BodyWrapper>
+            <View>
+              <DropDown
+                title="Relatório"
+                maxHeight={500}
+                open={open2}
+                value={value2}
+                items={items2}
+                setOpen={setOpen2}
+                setValue={setValue2}
+                setItems={setItems2}
+              />
+            </View>
+            <Button
+              title="Visualizar PDF"
+              color="#b51b28"
+              onPress={handlePress}
+            />
           </BodyWrapper>
         </Container>
       </If>

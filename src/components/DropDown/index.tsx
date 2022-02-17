@@ -6,11 +6,12 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 type ExtraProps = {
   title: string;
+  maxHeight: number;
 };
 
 type Props = DropDownPickerProps & ExtraProps;
 
-export function DropDown({ title, ...props }: Props) {
+export function DropDown({ title, maxHeight, ...props }: Props) {
   return (
     <View>
       <Label>{title}</Label>
@@ -38,7 +39,7 @@ export function DropDown({ title, ...props }: Props) {
         dropDownContainerStyle={{
           backgroundColor: '#1C1C1C',
           borderColor: 'transparent',
-          height: 85
+          height: maxHeight
         }}
       />
     </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { TouchableOpacityProps } from 'react-native';
 import { Container, Label } from './styles';
 
 interface Props {
@@ -7,7 +7,11 @@ interface Props {
   color: string;
 }
 
-export function Button({ title, color, ...props }: Props) {
+export function Button({
+  title,
+  color,
+  ...props
+}: Props & TouchableOpacityProps) {
   return (
     <Container color={color} {...props}>
       <Label>{title}</Label>

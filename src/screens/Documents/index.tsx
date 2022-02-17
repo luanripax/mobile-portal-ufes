@@ -16,15 +16,17 @@ export function Documents({ navigation }) {
     navigation.navigate(screen, { tag: tag });
   };
 
-  const showDocument = (document: string) => {
-    console.log(document);
+  const showDocument = (tag: string) => {
+    // buscar e titulo através da tag
+    const docTitle = DATA.find((item) => item.tag === tag);
+    navigation.navigate('PdfViewer', { title: docTitle.title });
   };
 
   const handleAction = (item) => {
     const action =
       item.action === 'navigate'
         ? navigateToScreen('DocumentSelect', item.tag)
-        : showDocument('oi');
+        : showDocument(item.tag);
     return action;
   };
 

@@ -34,7 +34,6 @@ export default function App() {
     return <AppLoading />;
   }
 
-  console.log(locale('general.greetings'));
   const Stack = createStackNavigator();
 
   return (

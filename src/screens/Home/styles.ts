@@ -3,7 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
     flex: 1;
     background-color: #2c2f33;
 `;
@@ -69,6 +69,55 @@ export const BoardLabel = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: ${RFValue(18)}px;
     color: white;
+    margin-bottom: 10px;
 `;
 
+export const SubjectInfo = styled.View`
+    padding-horizontal: 20px;
+    margin-top: 20px;
+`;
+
+export const SubjectLabel = styled.Text`
+    font-family: ${({theme}) => theme.fonts.primary_400};
+    font-size: ${RFValue(18)}px;
+    color: white;
+    margin-bottom: 5px;
+`;
+
+export const SContainer = styled.View`
+    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    border-radius: 5px;
+    padding-horizontal: 10px;
+    padding-vertical: 10px;
+    margin-bottom: 10px;
+`;
+
+export const STitle = styled.Text`
+    color: grey;
+`;
+
+export const SContent = styled.View`
+    flex-direction: row;
+    justify-content: space-evenly;
+`;
+
+export const AbscenceContainer = styled.View`
+    align-items: center;
+`;
+
+export const AbscenceLabel = styled.Text`
+    color: grey;
+    font-size: 12px;
+`;
+
+export const AbscenceValue = styled.Text`
+    color: grey;
+    font-size: 11px;
+`;
+
+export const STitleContainer = styled.View`
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+`;
 

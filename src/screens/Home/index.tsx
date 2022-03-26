@@ -83,11 +83,6 @@ export function Home({ navigation }) {
         <CategoryButton title="Solicitação de matrícula" icon="registry" />
       </ImportantInfo>
 
-      <BoardInfo>
-        <BoardLabel>Progresso</BoardLabel>
-        <SubjectCard />
-      </BoardInfo>
-
       <SubjectInfo>
         <SubjectLabel>Mural</SubjectLabel>
         <If condition={!openBoard}>
@@ -141,6 +136,11 @@ export function Home({ navigation }) {
               </AbscenceContainer>
             </SContent>*/}
       </SubjectInfo>
+
+      <BoardInfo>
+        <BoardLabel>Progresso</BoardLabel>
+        <SubjectCard />
+      </BoardInfo>
     </Container>
   );
 }

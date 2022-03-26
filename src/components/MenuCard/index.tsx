@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect } from 'react';
+import { Image } from 'react-native';
 import { Formik, FormikProps } from 'formik';
 import {
   Container,
@@ -6,8 +7,10 @@ import {
   MenuItems,
   Item,
   ItemLabel,
-  ItemContent
+  ItemContent,
+  ItemHeader
 } from './styles';
+import RUImages from '../../assets/index';
 
 interface Props {
   label: string;
@@ -24,32 +27,44 @@ export function MenuCard({
   error,
   handleChange
 }: Props) {
-  useEffect(() => {
-    console.log(error);
-  }, []);
 
   return (
     <Container>
       <Title>Cardápio</Title>
       <MenuItems>
         <Item>
-          <ItemLabel>Salada</ItemLabel>
+          <ItemHeader>
+            <Image source={RUImages.salad} style={{width: 25, height: 25}} resizeMode="contain"/>
+            <ItemLabel>Salada</ItemLabel>
+          </ItemHeader>
           <ItemContent>Cenoura e Chuchu</ItemContent>
         </Item>
         <Item>
-          <ItemLabel>Prato Principal</ItemLabel>
+          <ItemHeader>
+            <Image source={RUImages.meat} style={{width: 25, height: 25}} resizeMode="contain"/>
+            <ItemLabel>Prato Principal</ItemLabel>
+          </ItemHeader>
           <ItemContent>Músculo ao Molho de Tomate</ItemContent>
         </Item>
         <Item>
-          <ItemLabel>Opção</ItemLabel>
+          <ItemHeader>
+            <Image source={RUImages.vegetarian} style={{width: 25, height: 25}} resizeMode="contain"/>
+            <ItemLabel>Opção</ItemLabel>
+          </ItemHeader>
           <ItemContent>Grão de bico com ervilha</ItemContent>
         </Item>
         <Item>
-          <ItemLabel>Acompanhamento</ItemLabel>
+          <ItemHeader>
+            <Image source={RUImages.accompaniment} style={{width: 25, height: 25}} resizeMode="contain"/>
+            <ItemLabel>Acompanhamento</ItemLabel>
+          </ItemHeader>
           <ItemContent>Arroz branco e feijão carioca</ItemContent>
         </Item>
         <Item>
-          <ItemLabel>Guarnição</ItemLabel>
+          <ItemHeader>
+            <Image source={RUImages.garnish} style={{width: 25, height: 25}} resizeMode="contain"/>
+            <ItemLabel>Guarnição</ItemLabel>
+          </ItemHeader>
           <ItemContent>Farofa de couve</ItemContent>
         </Item>
       </MenuItems>

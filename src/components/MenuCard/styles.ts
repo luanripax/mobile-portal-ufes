@@ -20,17 +20,24 @@ export const Title = styled.Text`
 export const MenuItems = styled.View``;
 
 export const Item = styled.View`
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 `;
 
 export const ItemLabel = styled.Text`
     color: grey;
-    font-size: ${RFValue(13)}px;
+    font-size: ${RFValue(14)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
+    margin-left: 20px;
 `;
 
 export const ItemContent = styled.Text`
     color: white;
-    font-size: ${RFValue(14)}px;
+    font-size: ${RFValue(15)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
+`;
+
+export const ItemHeader = styled.View`
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
 `;

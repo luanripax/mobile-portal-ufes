@@ -29,7 +29,7 @@ export const BalanceLabel = styled.Text`
 export const Balance = styled.Text`
     color: #40D48D;
     font-family: ${({theme}) => theme.fonts.primary_400};
-    font-size:${RFValue(30)}px;
+    font-size:${RFValue(28)}px;
 `;
 
 export const BalanceHeader = styled.View`

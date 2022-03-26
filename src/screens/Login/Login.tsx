@@ -49,6 +49,7 @@ const Login: React.FC = () => {
                 value={values.email}
                 error={errors.email}
                 handleChange={handleChange('email')}
+                autoCapitalize="none"
               />
               <InputForm
                 label="Senha"
@@ -56,6 +57,7 @@ const Login: React.FC = () => {
                 value={values.password}
                 error={errors.password}
                 handleChange={handleChange('password')}
+                autoCapitalize="none"
               />
             </FormContainer>
             <ButtonContainer>

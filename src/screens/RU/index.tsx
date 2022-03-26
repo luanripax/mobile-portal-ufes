@@ -45,6 +45,7 @@ export function RU() {
   return (
     <Container>
       <MainHeader title="Restaurante Universitário" />
+      <ScrollView>
       <BalanceWrapper>
         <BalanceHeader>
           <BalanceLabel>Saldo</BalanceLabel>
@@ -56,10 +57,9 @@ export function RU() {
         </BalanceHeader>
         <Balance>R$ 100,00</Balance>
       </BalanceWrapper>
-      <ScrollView>
-        <MenuWrapper>
-          <MenuCard />
-        </MenuWrapper>
+      <MenuWrapper>
+        <MenuCard />
+      </MenuWrapper>
       </ScrollView>
     </Container>
   );

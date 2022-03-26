@@ -13,6 +13,9 @@ export default {
         },
 
         light: {
+            background_primary: '#FFFFFF',
+            main_dark: '#3E4248',
+            main_green: '#1D8E3E'
             
         }
 

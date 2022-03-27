@@ -23,6 +23,7 @@ import {
   TransitionPresets
 } from '@react-navigation/stack';
 import { SettingProvider } from './src/hooks/settings';
+import Recharge from './src/screens/Recharge/Recharge';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -75,6 +76,11 @@ export default function App() {
             <Stack.Screen
               name="Routes"
               component={AppRoutes}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Recharge"
+              component={Recharge}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

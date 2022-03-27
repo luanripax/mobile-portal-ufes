@@ -19,7 +19,7 @@ import {
   MenuWrapper
 } from './styles';
 
-export function RU() {
+export function RU({navigation}) {
   const data = [
     {
       id: 1,
@@ -50,7 +50,7 @@ export function RU() {
         <BalanceHeader>
           <BalanceLabel>Saldo</BalanceLabel>
           <TouchableOpacity
-            onPress={() => Linking.openURL('http://web7.ufes.br/gru-ru/')}
+            onPress={() => navigation.navigate("Recharge")}
           >
             <BalanceRecharge name="plus-circle" />
           </TouchableOpacity>

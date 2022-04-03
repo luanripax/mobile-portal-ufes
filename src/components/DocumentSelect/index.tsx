@@ -28,6 +28,7 @@ import If from '../../components/If';
 import { locale } from '../../locale';
 import { Button } from '../Button';
 import { DropDown } from '../DropDown';
+import { SubjectProgress } from '../../screens/SubjectProgress';
 
 export function DocumentSelect({ navigation, route }) {
   const { appTheme, setAppTheme, idiom, setIdiom } = useSetting();
@@ -160,6 +161,9 @@ export function DocumentSelect({ navigation, route }) {
             />
           </BodyWrapper>
         </Container>
+      </If>
+      <If condition={tag === 'subject'}>
+        <SubjectProgress />
       </If>
     </>
   );

@@ -54,6 +54,12 @@ export function Documents({ navigation }) {
       title: 'Calendário acadêmico',
       tag: 'calendar',
       action: 'show'
+    },
+    {
+      id: '5',
+      title: 'Progresso de disciplinas',
+      tag: 'subject',
+      action: 'navigate'
     }
   ];
 

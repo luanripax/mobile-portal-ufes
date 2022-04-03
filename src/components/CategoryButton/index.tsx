@@ -12,13 +12,15 @@ import Printer from '../../assets/printer.svg';
 import FingerPrint from '../../assets/fingerprint.svg';
 import Calendar from '../../assets/calendar.svg';
 import Books from '../../assets/books.svg';
+import Subject from '../../assets/subjects.svg';
 
 const iconComponents = {
     registry: <Clipboard />,
     report: <Printer />,
     calendar: <Calendar />,
     offer: <Books />,
-    identity: <FingerPrint />
+    identity: <FingerPrint />,
+    subject: <Subject />
 }
 
 interface Props {

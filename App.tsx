@@ -16,6 +16,7 @@ import { Settings } from './src/screens/Settings';
 import { SelectScreen } from './src/components/SelectScreen';
 import { DocumentSelect } from './src/components/DocumentSelect';
 import { PdfViewer } from './src/components/PdfViewer';
+import { SubjectProgress } from './src/screens/SubjectProgress';
 import theme from './src/styles/theme';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {

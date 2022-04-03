@@ -18,13 +18,24 @@ import {
   ButtonContainer,
   ButtonLabel
 } from './styles';
+import Firebase from '../../../firebase';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
+  const auth = getAuth();
 
   const onSubmit = (values: FormLogin) => {
-    console.log(values);
-    navigation.navigate('Routes');
+    
+    const currentEmail = values.email;
+    values.email = `${values.email}@ufes.com`;
+
+    signInWithEmailAndPassword(auth, values.email, values.password)
+    .then(() => navigation.navigate('Routes'))
+    .catch((error) => {
+      console.log(error);
+      values.email = currentEmail;
+    })
   };
 
   return (

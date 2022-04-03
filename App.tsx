@@ -7,7 +7,8 @@ import {
   Poppins_400Regular,
   Poppins_500Medium
 } from '@expo-google-fonts/poppins';
-
+import { initializeApp } from "firebase/app";
+import firebaseConfig from './firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { Locale } from './src/locale';
 import { AppRoutes } from './src/routes/app.routes';
@@ -31,6 +32,8 @@ export default function App() {
     Poppins_400Regular,
     Poppins_500Medium
   });
+
+  initializeApp(firebaseConfig);
 
   if (!fontsLoaded) {
     return <AppLoading />;

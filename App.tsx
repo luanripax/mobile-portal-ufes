@@ -26,6 +26,8 @@ import {
 } from '@react-navigation/stack';
 import { SettingProvider } from './src/hooks/settings';
 import Recharge from './src/screens/Recharge/Recharge';
+import { Provider } from 'mobx-react';
+import store from './src/stores';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -42,55 +44,57 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <ThemeProvider theme={theme}>
-      <SettingProvider>
-        <NavigationContainer theme={{ colors: { background: '#000' } }}>
-          <Stack.Navigator
-            initialRouteName="Login"
-            screenOptions={{
-              cardStyle: { backgroundColor: 'transparent' },
-              ...TransitionPresets.SlideFromRightIOS
-            }}
-          >
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Settings"
-              component={Settings}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SelectScreen"
-              component={SelectScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="DocumentSelect"
-              component={DocumentSelect}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="PdfViewer"
-              component={PdfViewer}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Routes"
-              component={AppRoutes}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Recharge"
-              component={Recharge}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-        <Locale />
-      </SettingProvider>
-    </ThemeProvider>
+    <Provider rootStore={store}>
+      <ThemeProvider theme={theme}>
+        <SettingProvider>
+          <NavigationContainer theme={{ colors: { background: '#000' } }}>
+            <Stack.Navigator
+              initialRouteName="Login"
+              screenOptions={{
+                cardStyle: { backgroundColor: 'transparent' },
+                ...TransitionPresets.SlideFromRightIOS
+              }}
+            >
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Settings"
+                component={Settings}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SelectScreen"
+                component={SelectScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="DocumentSelect"
+                component={DocumentSelect}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="PdfViewer"
+                component={PdfViewer}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Routes"
+                component={AppRoutes}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Recharge"
+                component={Recharge}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+          <Locale />
+        </SettingProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }

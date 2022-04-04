@@ -1,13 +1,16 @@
 import React from 'react';
 import Logo from '../../assets/logo.svg';
+import { observer } from 'mobx-react';
 import { InputForm } from '../../components/InputForm';
-import { KeyboardAvoidingView } from 'react-native';
 import { useFormikContext, FormikProps, Formik } from 'formik';
 import { FormLogin } from './formValues';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { initialValues } from './formValues';
 import { validationSchema } from './validationSchema';
 import { useNavigation } from '@react-navigation/native';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc, Firestore, getFirestore } from "firebase/firestore";
+import { useStores } from '../../hooks/useStores';
 import {
   Container,
   Title,
@@ -18,24 +21,43 @@ import {
   ButtonContainer,
   ButtonLabel
 } from './styles';
-import Firebase from '../../../firebase';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
   const auth = getAuth();
+  const { user } = useStores();
+  
+  const getData = async() => {
+    const db = getFirestore();
+    const docRef = doc(db, "users", "gp6yrAmOlmTcNDbH3nWI");
+    const docSnap = await getDoc(docRef);
+    console.log(docSnap.data());
+  }
 
-  const onSubmit = (values: FormLogin) => {
+  const onSubmit = async(values: FormLogin) => {
     
-    const currentEmail = values.email;
-    values.email = `${values.email}@ufes.com`;
+    try {
+      //const email = `${values.email}@ufes.com`;
+      //await signInWithEmailAndPassword(auth, email, values.password);
+      await user.login(values.email, values.password);
+    } catch (err) {
+      console.log(err.code);
+    }
+    //getData();
+    
+    /*const email = `${values.email}@ufes.com`;
+    
 
-    signInWithEmailAndPassword(auth, values.email, values.password)
+    signInWithEmailAndPassword(auth, email, values.password)
     .then(() => navigation.navigate('Routes'))
     .catch((error) => {
       console.log(error);
-      values.email = currentEmail;
-    })
+    })*/
+    //try {
+     // await user.login(values.email, values.password);
+    //} catch (err) {
+    //s  console.log('aaaaaaaaaa');
+    //}
   };
 
   return (
@@ -83,4 +105,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default observer(Login);

@@ -1,8 +1,7 @@
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { RectButton } from 'react-native-gesture-handler';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { Button as ButtonComponent } from '../../components/Button';
 
 export const Container = styled.View`
     flex: 1;
@@ -39,16 +38,9 @@ export const ButtonContainer = styled.View`
     margin-top: 40px;
 `;
 
-export const Button = styled(TouchableOpacity)`
-    background-color: #40D48D;
-    padding: 15px 50px;
-    width: 100%;
+export const Button = styled(ButtonComponent).attrs({color: '#34AA71'})`
     align-items: center;
-    border-radius: 5px;
-`;
-
-export const ButtonLabel = styled.Text`
-    font-family: ${({theme}) => theme.fonts.primary_400};
-    color: #F8F8F8;
-    font-weight: bold;
+    justify-content: center;
+    width: 140px;
+    height: 50px;
 `;

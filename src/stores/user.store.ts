@@ -1,6 +1,7 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import ResponseError from '../utils/ReponseError';
+import * as AuthApi from '../api/auth/auth.api';
 
 export default class UserStore {
 
@@ -9,10 +10,6 @@ export default class UserStore {
 
     @action
     login = async(email, password) => {
-        const auth = getAuth();
-        const emailFormatted = `${email}@ufes.com`;
-        await signInWithEmailAndPassword(auth, emailFormatted, password)
-        //.catch((err) => {throw new ResponseError(err)})
-        
+        await AuthApi.login(email, password);        
     };
 }

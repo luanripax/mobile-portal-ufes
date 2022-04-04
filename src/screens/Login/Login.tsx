@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../../assets/logo.svg';
 import { observer } from 'mobx-react';
 import { InputForm } from '../../components/InputForm';
@@ -8,9 +8,9 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { initialValues } from './formValues';
 import { validationSchema } from './validationSchema';
 import { useNavigation } from '@react-navigation/native';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, Firestore, getFirestore } from "firebase/firestore";
 import { useStores } from '../../hooks/useStores';
+import { showMessage, hideMessage } from "react-native-flash-message";
 import {
   Container,
   Title,
@@ -19,13 +19,12 @@ import {
   FormContainer,
   Button,
   ButtonContainer,
-  ButtonLabel
 } from './styles';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
-  const auth = getAuth();
   const { user } = useStores();
+  const [loaded, setLoaded] = useState(false);
   
   const getData = async() => {
     const db = getFirestore();
@@ -37,27 +36,14 @@ const Login: React.FC = () => {
   const onSubmit = async(values: FormLogin) => {
     
     try {
-      //const email = `${values.email}@ufes.com`;
-      //await signInWithEmailAndPassword(auth, email, values.password);
+      setLoaded(true);
       await user.login(values.email, values.password);
+      setLoaded(false);
     } catch (err) {
       console.log(err.code);
+      showMessage({message: err.message, type: 'danger', duration: 3000})
+      setLoaded(false);
     }
-    //getData();
-    
-    /*const email = `${values.email}@ufes.com`;
-    
-
-    signInWithEmailAndPassword(auth, email, values.password)
-    .then(() => navigation.navigate('Routes'))
-    .catch((error) => {
-      console.log(error);
-    })*/
-    //try {
-     // await user.login(values.email, values.password);
-    //} catch (err) {
-    //s  console.log('aaaaaaaaaa');
-    //}
   };
 
   return (
@@ -94,9 +80,7 @@ const Login: React.FC = () => {
               />
             </FormContainer>
             <ButtonContainer>
-              <Button onPress={handleSubmit}>
-                <ButtonLabel>ENTRAR</ButtonLabel>
-              </Button>
+              <Button title='ENTRAR' onPress={handleSubmit} loading={loaded}/>
             </ButtonContainer>
           </Container>
         )}

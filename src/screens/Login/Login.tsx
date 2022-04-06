@@ -10,7 +10,7 @@ import { validationSchema } from './validationSchema';
 import { useNavigation } from '@react-navigation/native';
 import { doc, getDoc, Firestore, getFirestore } from "firebase/firestore";
 import { useStores } from '../../hooks/useStores';
-import { showMessage, hideMessage } from "react-native-flash-message";
+import { showError } from '../../utils/flashMessages';
 import {
   Container,
   Title,
@@ -38,10 +38,11 @@ const Login: React.FC = () => {
     try {
       setLoaded(true);
       await user.login(values.email, values.password);
+      await user.getUserInfo();
+      navigation.navigate('Routes');
       setLoaded(false);
     } catch (err) {
-      console.log(err.code);
-      showMessage({message: err.message, type: 'danger', duration: 3000})
+      showError(err.message);
       setLoaded(false);
     }
   };
@@ -69,6 +70,7 @@ const Login: React.FC = () => {
                 error={errors.email}
                 handleChange={handleChange('email')}
                 autoCapitalize="none"
+                autoCorrect={false}
               />
               <InputForm
                 label="Senha"
@@ -77,6 +79,8 @@ const Login: React.FC = () => {
                 error={errors.password}
                 handleChange={handleChange('password')}
                 autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry={true}
               />
             </FormContainer>
             <ButtonContainer>

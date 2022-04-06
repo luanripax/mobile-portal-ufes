@@ -11,7 +11,15 @@ interface Props {
     handleChange: (e: string | ChangeEvent<any>) => void;
 }
 
-export function InputForm({label, placeholder, value, error, handleChange, autoCapitalize, ...props}:Props & TextInputProps) {
+export function InputForm({
+    label, 
+    placeholder, 
+    value, 
+    error, 
+    handleChange, 
+    autoCapitalize, 
+    secureTextEntry,
+    ...props}:Props & TextInputProps) {
 
     return(
         <Container {...props}>
@@ -22,6 +30,8 @@ export function InputForm({label, placeholder, value, error, handleChange, autoC
                 error={error}
                 placeholder={placeholder}
                 autoCapitalize={autoCapitalize}
+                secureTextEntry={secureTextEntry}
+                autoCorrect={false}
             />
             <Error>{error}</Error>
         </Container>

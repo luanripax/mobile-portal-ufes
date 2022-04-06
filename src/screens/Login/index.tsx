@@ -10,9 +10,9 @@ export const LoginContainer: React.FC = ({}) => {
     return (
        <>
             <StatusBar 
-            barStyle='light-content'
-            backgroundColor="transparent"
-            translucent
+               barStyle='light-content'
+               backgroundColor="transparent"
+               translucent
             />
             <Login/>
        </>

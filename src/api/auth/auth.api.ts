@@ -10,4 +10,4 @@ export const login = async (email, password): Promise<void> => {
     } catch (error) {
       throw new ResponseError(error);
     }
-  };
+};

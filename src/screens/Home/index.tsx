@@ -10,6 +10,7 @@ import CategoryButton from '../../components/CategoryButton';
 import { SubjectCard } from '../../components/SubjectCard';
 import { NavigationAction, useNavigation } from '@react-navigation/native';
 import { ProgressChart } from 'react-native-chart-kit';
+import { useStores } from '../../hooks/useStores';
 import * as Progress from 'react-native-progress';
 import {
   Container,
@@ -52,6 +53,7 @@ export function Home({ navigation }) {
   ];
 
   const [openBoard, setOpenBoard] = useState(false);
+  const { user } = useStores();
 
   const handleNavigate = () => {
     navigation.navigate('Settings');
@@ -66,7 +68,7 @@ export function Home({ navigation }) {
       />
       <Header>
         <PersonalInfo>
-          <Title>Olá, Luan</Title>
+          <Title>{`Olá, ${user.userInfo.firstname}`}</Title>
           <TouchableOpacity onPress={handleNavigate}>
             <Icon name="settings" />
           </TouchableOpacity>
@@ -74,7 +76,7 @@ export function Home({ navigation }) {
 
         <CourseInfo>
           <CourseLabel>Curso</CourseLabel>
-          <Course>Ciência da computação</Course>
+          <Course>{user.userInfo.course}</Course>
         </CourseInfo>
       </Header>
 

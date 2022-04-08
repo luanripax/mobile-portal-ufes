@@ -20,26 +20,24 @@ import {
   Button,
   ButtonContainer,
 } from './styles';
+import { StackActions, CommonActions } from '@react-navigation/native';
 
-const Login: React.FC = () => {
-  const navigation = useNavigation();
-  const { user } = useStores();
+const Login = ({navigation}) => {
+  const { user, info } = useStores();
   const [loaded, setLoaded] = useState(false);
   
-  const getData = async() => {
-    const db = getFirestore();
-    const docRef = doc(db, "users", "gp6yrAmOlmTcNDbH3nWI");
-    const docSnap = await getDoc(docRef);
-    console.log(docSnap.data());
-  }
-
-  const onSubmit = async(values: FormLogin) => {
-    
+  const onSubmit = async(values: FormLogin) => { 
     try {
       setLoaded(true);
       await user.login(values.email, values.password);
       await user.getUserInfo();
-      navigation.navigate('Routes');
+      await info.getGeneralInfo();
+      navigation.dispatch(CommonActions.reset({
+        index: 1,
+        routes: [
+          { name: 'Routes' },
+        ],
+      }));
       setLoaded(false);
     } catch (err) {
       showError(err.message);

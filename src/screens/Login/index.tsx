@@ -5,16 +5,16 @@ import { validationSchema } from "./validationSchema";
 import {StatusBar} from 'react-native';
 import  Login  from "./Login";
 
-export const LoginContainer: React.FC = ({}) => {
+export const LoginContainer = ({navigation}) => {
 
     return (
        <>
-            <StatusBar 
-               barStyle='light-content'
-               backgroundColor="transparent"
-               translucent
-            />
-            <Login/>
+         <StatusBar 
+            barStyle='light-content'
+            backgroundColor="transparent"
+            translucent
+         />
+         <Login navigation={navigation}/>
        </>
       );
 }

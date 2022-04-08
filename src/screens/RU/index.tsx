@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import { MenuCard } from '../../components/MenuCard';
+import { useStores } from '../../hooks/useStores';
 import {
   Container,
   MainHeader,
@@ -42,6 +43,8 @@ export function RU({navigation}) {
     );
   };
 
+  const { info } = useStores();
+
   return (
     <Container>
       <MainHeader title="Restaurante Universitário" />
@@ -58,7 +61,7 @@ export function RU({navigation}) {
         <Balance>R$ 100,00</Balance>
       </BalanceWrapper>
       <MenuWrapper>
-        <MenuCard />
+        <MenuCard items={info.RuMenu}/>
       </MenuWrapper>
       </ScrollView>
     </Container>

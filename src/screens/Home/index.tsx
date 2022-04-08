@@ -38,22 +38,25 @@ import {
 import If from '../../components/If';
 
 export function Home({ navigation }) {
+
+  const { user, info } = useStores();
+
   const data = {
     labels: ['Optativas', 'Obrigatórias', 'Total'], // optional
     data: [0.8, 0.6, 0.4]
   };
 
-  const boardNews = [
+  /*const boardNews = [
     '• O período de matricula 3022/1 começa sexta feira, favor nao se atrasem para tla',
     '• A colação de grau poderá acontecer a qualquer momento então fique atento !',
     '• A colação de grau poderá acontecer a qualquer momento então fique atento !',
     '• A colação de grau poderá acontecer a qualquer momento então fique atento !',
     '• A colação de grau poderá acontecer a qualquer momento então fique atento !',
     '• A colação de grau poderá acontecer a qualquer momento então fique atento !'
-  ];
+  ];*/
+  const { boardNews } = info;
 
   const [openBoard, setOpenBoard] = useState(false);
-  const { user } = useStores();
 
   const handleNavigate = () => {
     navigation.navigate('Settings');
@@ -90,7 +93,7 @@ export function Home({ navigation }) {
         <If condition={!openBoard}>
           <SContainer>
             <Text style={{ color: 'white', marginBottom: 10 }}>
-              {boardNews[0]}
+              {boardNews[0].new}
             </Text>
             <TouchableOpacity onPress={() => setOpenBoard(true)}>
               <Icon name="chevron-down" />
@@ -101,7 +104,7 @@ export function Home({ navigation }) {
         <If condition={openBoard}>
           <SContainer>
             {boardNews.map((item) => (
-              <Text style={{ color: 'white', marginBottom: 20 }}>{item}</Text>
+              <Text key={item.id} style={{ color: 'white', marginBottom: 20 }}>{item.new}</Text>
             ))}
             <TouchableOpacity onPress={() => setOpenBoard((old) => !old)}>
               <Icon name="chevron-up" />

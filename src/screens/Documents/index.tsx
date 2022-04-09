@@ -19,7 +19,7 @@ export function Documents({ navigation }) {
   const showDocument = (tag: string) => {
     // buscar e titulo através da tag
     const docTitle = DATA.find((item) => item.tag === tag);
-    navigation.navigate('PdfViewer', { title: docTitle.title });
+    navigation.navigate('PdfViewer', { title: docTitle.title, tag });
   };
 
   const handleAction = (item) => {

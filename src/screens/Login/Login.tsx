@@ -25,7 +25,7 @@ import { StackActions, CommonActions } from '@react-navigation/native';
 const Login = ({navigation}) => {
   const { user, info } = useStores();
   const [loaded, setLoaded] = useState(false);
-  
+
   const onSubmit = async(values: FormLogin) => { 
     try {
       setLoaded(true);

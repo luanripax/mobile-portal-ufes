@@ -1,7 +1,4 @@
 import { action, computed, observable, runInAction } from 'mobx';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import ResponseError from '../utils/ReponseError';
-import * as AuthApi from '../api/auth/auth.api';
 import * as FireStoreApi from '../api/firestore/firestore.api';
 
 interface BoardProps {

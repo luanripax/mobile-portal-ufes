@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSetting } from '../../hooks/settings';
-import { View, Text, Platform, Switch } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { View, Text, Platform, Switch, ActivityIndicator} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -9,51 +7,45 @@ import {
 import {
   Container,
   MainHeader,
-  Setting,
-  Label,
-  Separator,
-  SettingsWrapper,
-  Logout,
-  LogoutLabel,
-  SwitchButton,
-  DropDown,
-  Value,
-  ValueTitle,
-  Icon
+  ContentWrapper
 } from './styles';
 import If from '../../components/If';
 import { locale } from '../../locale';
 import PDFReader from 'rn-pdf-reader-js';
+import { useStores } from '../../hooks/useStores';
 
 export function PdfViewer({ navigation, route }) {
-  const { appTheme, setAppTheme, idiom, setIdiom } = useSetting();
-  const [update, setUpdate] = useState(false);
-  const { title } = route.params;
+  const { user } = useStores();
+  const [Url, setUrl] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { title, tag } = route.params;
 
-  const changeTheme = (theme: string) => {
-    setAppTheme(theme);
-  };
-
-  const changeIdiom = (selectedIdiom: string) => {
-    setIdiom(selectedIdiom);
-  };
+  const getPdfUrl = async() => {
+    try {
+      setLoading(true);
+      const url = await user.getUserDocumentURL(user.userName, tag);
+      setUrl(url);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
-    setUpdate((old) => !old);
-  }, [idiom, appTheme]);
-
-  const isDark = appTheme === 'dark';
-  const isEnglish = idiom === 'en_US';
-
-  const source = {
-    uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf',
-    cache: true
-  };
-
+    getPdfUrl();
+  }, []);
+  
   return (
     <Container>
       <MainHeader title={title} />
-      <PDFReader source={source} useGoogleReader noLoader={false} />
+      <ContentWrapper>
+        <If condition={loading}>
+          <ActivityIndicator size="large" />
+        </If>
+        <If condition={!loading}>
+          <PDFReader source={{uri: Url}} noLoader={true} />
+        </If>
+      </ContentWrapper>
     </Container>
   );
 }

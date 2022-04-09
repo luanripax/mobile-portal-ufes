@@ -13,6 +13,13 @@ export const Container = styled.View`
 `;
 
 export const MainHeader = styled(StackHeader)`
+    margin-bottom: 0px;
+`;
+
+export const ContentWrapper = styled.View`
+    flex: 1;
+    transform: scale(1);
+    justify-content: center;
 `;
 
 export const Setting = styled.TouchableOpacity`

@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Home } from '../screens/Home';
 import { Documents } from '../screens/Documents';
-import { Feed } from '../screens/Feed';
+import  Feed  from '../screens/Feed';
 import { RU } from '../screens/RU';
 import Login from '../screens/Login/Login';
 

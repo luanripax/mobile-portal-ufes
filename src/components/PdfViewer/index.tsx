@@ -13,6 +13,7 @@ import If from '../../components/If';
 import { locale } from '../../locale';
 import PDFReader from 'rn-pdf-reader-js';
 import { useStores } from '../../hooks/useStores';
+import { showError } from '../../utils/flashMessages';
 
 export function PdfViewer({ navigation, route }) {
   const { user } = useStores();
@@ -23,11 +24,11 @@ export function PdfViewer({ navigation, route }) {
   const getPdfUrl = async() => {
     try {
       setLoading(true);
-      const url = await user.getUserDocumentURL(user.userName, tag);
+      const url = await user.getRequestedDocumentURL(tag);
       setUrl(url);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      showError(err);
     }
   }
 

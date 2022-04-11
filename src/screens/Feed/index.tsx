@@ -1,30 +1,61 @@
-import React from 'react';
+import { observer } from 'mobx-react';
+import React, { useEffect, useState } from 'react';
 import { CollegiateNew } from '../../components/CollegiateNew';
+import { useStores } from '../../hooks/useStores';
+import { showError } from '../../utils/flashMessages';
+import If from '../../components/If';
+import { ActivityIndicator, FlatList } from 'react-native';
 
-import { Container, MainHeader } from './styles';
+import { Container, MainHeader, LoadingWrapper } from './styles';
 
-export function Feed() {
+const Feed = () => {
+
+  const { info, user } = useStores();
+  const { code } = user.userInfo.course;
+
+  const [loading, setLoading] = useState(false);
+
+  const getCollegiateNews = async() => {
+    try {
+      setLoading(true);
+      await info.getCollegiateNews(code);
+      setLoading(false);
+    } catch (err) {
+      showError(err.message);
+    }
+  }
+
+  const renderNews = ({ item }) => (
+    <CollegiateNew
+      date={item.posted_at}
+      content={item.message}
+      liked={item.liked}
+      likes={item.likes}
+    />
+  );
+
+  useEffect(() => {
+    getCollegiateNews();
+  },[]);
+
+  
   return (
     <Container>
       <MainHeader title="Notícias" />
-      <CollegiateNew
-        date="Ontem"
-        content="Carteirinhas já estão disponiveis, vem buscar aqui por favor"
-        liked={true}
-        likes={21}
-      />
-      <CollegiateNew
-        date="1 dia atrás"
-        content="Muitas pessoas precisam aprender a usar o vaso e nao jogar papel na privada, fazer nao fazer mais isso ok?"
-        liked={false}
-        likes={10}
-      />
-      <CollegiateNew
-        date="1 mês atrás"
-        content="A votação vai acontecer amanhã lá no auditório do ccee as 21 horas"
-        liked={true}
-        likes={2}
-      />
+      <If condition={loading}>
+        <LoadingWrapper>
+          <ActivityIndicator size="large"/>
+        </LoadingWrapper>
+      </If>
+      <If condition={!loading}>
+        <FlatList
+          data={info.collegiateNews}
+          renderItem={renderNews}
+          keyExtractor={(item) => item.id}
+        />
+      </If>
     </Container>
   );
 }
+
+export default observer(Feed);

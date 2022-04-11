@@ -9,3 +9,8 @@ export const Container = styled.View`
 export const MainHeader = styled(Header)`
     margin-bottom: 10px;
 `;
+
+export const LoadingWrapper = styled.View`
+    flex: 1;
+    justify-content: center;
+`;

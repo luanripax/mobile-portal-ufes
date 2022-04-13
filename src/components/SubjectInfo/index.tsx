@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import If from "../If";
 
 import { 
@@ -36,9 +36,33 @@ interface Props {
     title: string;
     icon: string;
     active: boolean;
+    average: number;
+    absences: number;
+    maxAbsences: number;
 }
 
-const SubjectInfo: FC<Props> = ({title, icon, active, ...props}) => {
+const SubjectInfo: FC<Props> = ({
+    title, 
+    icon, 
+    average,
+    absences,
+    maxAbsences,
+    ...props}) => {
+
+    const [active, setActive] = useState(false);
+
+    const getAbsenceWarningColor = () => {
+        let color = '';
+        const percentage = absences/maxAbsences;
+        if(percentage <= 0.25 || percentage < 0.5)
+            color = 'green';
+        if(percentage >= 0.5)
+            color = 'orange'
+        if(percentage >= 0.75)
+            color = 'red'
+        return color;
+    }
+
     return(
         <>
             <If condition={active}>
@@ -48,11 +72,13 @@ const SubjectInfo: FC<Props> = ({title, icon, active, ...props}) => {
                         <InfoWrapper>
                             <AverageWrapper>
                                 <AverageLabel>Média</AverageLabel>
-                                <Average>6.7</Average>
+                                <Average>{average}</Average>
                            </AverageWrapper>
                            <AbscenceWrapper>
                                 <AbscenceLabel>Faltas</AbscenceLabel>
-                                <Abscence>2/6</Abscence>
+                                <Abscence warningColor={getAbsenceWarningColor}>
+                                    {`${absences}/${maxAbsences}`}
+                                </Abscence>
                            </AbscenceWrapper>
                         </InfoWrapper>
                     </ContentWrapper>

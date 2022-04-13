@@ -32,6 +32,7 @@ export const CategoryWrapper = styled.View`
 
 
 export const CategoryTitle = styled.Text`
+    font-family: ${({theme}) => theme.fonts.primary_400};
     color: gray;
     font-size: 22px;
     margin-left: 15px;

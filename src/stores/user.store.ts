@@ -24,6 +24,9 @@ export default class UserStore {
     @observable
     userName = '';
 
+    @observable
+    userSubjects = [];
+
     @action
     login = async(email:string, password:string) => {
         await AuthApi.login(email, password);  
@@ -35,6 +38,12 @@ export default class UserStore {
         const data = await FireStoreApi.getUserInfo(this.userName);   
         this.userInfo = data as UserInfoProps;
     };
+
+    @action
+    getUserSubjects = async() => {
+        const data = await FireStoreApi.getUserSubjects(this.userName);
+        this.userSubjects = data.subjects;
+    }
 
     @action
     getRequestedDocumentURL = async(document: string) => {

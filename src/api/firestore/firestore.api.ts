@@ -36,4 +36,16 @@ export const getCollegiateNews = async (courseId: number) => {
   } catch(error) {
     throw new ResponseError(error);
   }
-}
+}  
+
+export const getUserSubjects = async (userName: string) => {
+  try {
+      const db = getFirestore();
+      const usersRef = collection(db, "subjects");
+      const q = query(usersRef, where("username", "==", userName));
+      const result = await getDocs(q);
+      return result.docs.shift().data();
+  } catch (error) {
+    throw new ResponseError(error);
+  }
+};

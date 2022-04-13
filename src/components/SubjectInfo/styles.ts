@@ -79,5 +79,5 @@ export const AbscenceLabel = styled.Text`
 export const Abscence = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: 20px;
-    color: orange;
+    color: ${({warningColor}) => warningColor};
 `;

@@ -27,7 +27,6 @@ export function SubjectProgress() {
     <SubjectInfoFC
       title={item.name}
       icon={item.tag}
-      active={item.id === 1 ? open : false}
       average={item.average}
       absences={item.absences}
       maxAbsences={item.max_absence}

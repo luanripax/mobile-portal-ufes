@@ -12,7 +12,11 @@ import {
 } from './styles';
 import RUImages from '../../assets/index';
 
-interface Props {
+interface ItemProps {
+  id: number;
+  code: string;
+  label: string;
+  content: string;
 }
 
 export function MenuCard({items}) {
@@ -21,10 +25,14 @@ export function MenuCard({items}) {
     <Container>
       <Title>Cardápio</Title>
       <MenuItems>
-        {items.map(item => 
+        {items.map((item: ItemProps) => 
         <Item key={item.id}>
           <ItemHeader>
-            <Image source={RUImages[item.code]} style={{width: 25, height: 25}} resizeMode="contain"/>
+            <Image 
+              source={RUImages[item.code]} 
+              style={{width: 25, height: 25}} 
+              resizeMode="contain"
+            />
             <ItemLabel>{item.label}</ItemLabel>
           </ItemHeader>
           <ItemContent>{item.content}</ItemContent>

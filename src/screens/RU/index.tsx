@@ -1,12 +1,8 @@
 import React from 'react';
 import {
   TouchableOpacity,
-  Linking,
-  View,
-  Text,
   ScrollView
 } from 'react-native';
-import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import { MenuCard } from '../../components/MenuCard';
 import { useStores } from '../../hooks/useStores';
 import {
@@ -21,28 +17,7 @@ import {
 } from './styles';
 
 export function RU({navigation}) {
-  const data = [
-    {
-      id: 1,
-      name: 2
-    },
-    {
-      id: 2,
-      name: 2
-    }
-  ];
-
-  const render = ({ item, index }) => {
-    return (
-      <View>
-        <Text>
-          {item.id}
-          {item.index}
-        </Text>
-      </View>
-    );
-  };
-
+  
   const { info } = useStores();
 
   return (

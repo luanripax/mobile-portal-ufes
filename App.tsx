@@ -26,6 +26,7 @@ import {
 } from '@react-navigation/stack';
 import { SettingProvider } from './src/hooks/settings';
 import Recharge from './src/screens/Recharge/Recharge';
+import { Report } from './src/screens/Report';
 import { Provider } from 'mobx-react';
 import store from './src/stores';
 import FlashMessage from "react-native-flash-message";
@@ -89,6 +90,11 @@ export default function App() {
               <Stack.Screen
                 name="Recharge"
                 component={Recharge}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Report"
+                component={Report}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

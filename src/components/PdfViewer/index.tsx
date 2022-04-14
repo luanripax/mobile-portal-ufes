@@ -28,7 +28,7 @@ export function PdfViewer({ navigation, route }) {
       setUrl(url);
       setLoading(false);
     } catch (err) {
-      showError(err);
+      showError(err.message);
     }
   }
 

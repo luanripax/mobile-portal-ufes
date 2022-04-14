@@ -29,6 +29,7 @@ import { locale } from '../../locale';
 import { Button } from '../Button';
 import { DropDown } from '../DropDown';
 import { SubjectProgress } from '../../screens/SubjectProgress';
+import { Report } from '../../screens/Report';
 
 export function DocumentSelect({ navigation, route }) {
   const { appTheme, setAppTheme, idiom, setIdiom } = useSetting();
@@ -45,20 +46,6 @@ export function DocumentSelect({ navigation, route }) {
     { label: 'Oferta por departamento', value: 'apple5' }
   ]);
 
-  const [open2, setOpen2] = useState(false);
-  const [value2, setValue2] = useState('history');
-  const [items2, setItems2] = useState([
-    { label: 'Histórico parcial', value: 'history' },
-    { label: 'Grade Horário Individual', value: 'schedule' },
-    { label: 'Currículo de cursos', value: 'curriculum' },
-    { label: 'Comprovante de matrícula provisório', value: 'temp' },
-    { label: 'Ficha Cadastral do Aluno', value: 'register-file' },
-    { label: 'Integralização curricular', value: 'integral' },
-    { label: 'Comprovante de solicitação', value: 'receipt' },
-    { label: 'Atestado de Matrícula', value: 'certificate' },
-    { label: 'Atestado de Reconhecimento', value: 'recognize-certificate' }
-  ]);
-
   const changeTheme = (theme: string) => {
     setAppTheme(theme);
   };
@@ -73,10 +60,6 @@ export function DocumentSelect({ navigation, route }) {
 
   const isDark = appTheme === 'dark';
   const isEnglish = idiom === 'en_US';
-
-  const handlePress = () => {
-    console.log('pressed');
-  };
 
   return (
     <>
@@ -138,29 +121,7 @@ export function DocumentSelect({ navigation, route }) {
         </Container>
       </If>
       <If condition={tag === 'report'}>
-        <Container>
-          <MainHeader title="Oferta - 2022/1" />
-
-          <BodyWrapper>
-            <View>
-              <DropDown
-                title="Relatório"
-                maxHeight={500}
-                open={open2}
-                value={value2}
-                items={items2}
-                setOpen={setOpen2}
-                setValue={setValue2}
-                setItems={setItems2}
-              />
-            </View>
-            <Button
-              title="Visualizar PDF"
-              color="#b51b28"
-              onPress={handlePress}
-            />
-          </BodyWrapper>
-        </Container>
+        <Report navigation={navigation}/>
       </If>
       <If condition={tag === 'subject'}>
         <SubjectProgress />

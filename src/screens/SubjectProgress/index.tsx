@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from '../../components/Header';
-import CategoryButton from '../../components/CategoryButton';
-import SubjectInfo from '../../components/SubjectInfo';
 import { FlatList, View, Text, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
-import getIcon from '../../utils/icons';
 import { StackHeader } from '../../components/StackHeader';
-import {Feather} from '@expo/vector-icons';
 import If from '../../components/If';
+import { locale } from '../../locale';
 
 import {
   Container,
-  HeaderComponent,
   ContentWrapper,
   SubjectInfoFC,
   CategoryWrapper,
@@ -20,6 +15,7 @@ import {
 } from './styles';
 import { useStores } from '../../hooks/useStores';
 import { showError } from '../../utils/flashMessages';
+import getSubjectIcon from '../../utils/subjectIcons';
 
 export function SubjectProgress() {
   
@@ -41,8 +37,8 @@ export function SubjectProgress() {
   const renderCategories = ({item}) => (
     <>
       <CategoryWrapper >
-        <CategoryIcon name="desktop-mac"/>
-        <CategoryTitle>{item.department}</CategoryTitle>
+        <CategoryIcon name={getSubjectIcon(item.department)}/>
+        <CategoryTitle>{locale(`subjects.${item.department}`)}</CategoryTitle>
       </CategoryWrapper>
       <CategoryLine />
       <ContentWrapper>

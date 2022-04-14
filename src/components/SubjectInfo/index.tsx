@@ -66,7 +66,7 @@ const SubjectInfo: FC<Props> = ({
     return(
         <>
             <If condition={active}>
-                <Container {...props}>
+                <Container {...props} onPress={() => setActive(false)}>
                     <ContentWrapper active={active}>
                         <Title>{title}</Title>
                         <InfoWrapper>
@@ -86,7 +86,7 @@ const SubjectInfo: FC<Props> = ({
                 </Container>
             </If>
             <If condition={!active}>
-                <Container {...props}>
+                <Container {...props} onPress={() => setActive(true)}>
                     <ContentWrapper>
                         <Title>{title}</Title>
                     </ContentWrapper>

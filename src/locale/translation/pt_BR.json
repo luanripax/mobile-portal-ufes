@@ -17,5 +17,9 @@
     "idioms": {
         "pt_BR": "Português",
         "en_US": "Inglês"
+    },
+    "subjects": {
+        "math": "Matemática",
+        "computer": "Informática"
     }
 }

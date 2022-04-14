@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 
 const SettingContext = createContext({
-  idiom: 'en_US',
+  idiom: 'pt_BR',
   appTheme: 'dark',
   allowNotify: true
 });
@@ -19,7 +19,7 @@ interface SettingProviderProps {
 
 function SettingProvider({ children }: SettingProviderProps) {
   const [appTheme, setAppTheme] = useState('dark');
-  const [idiom, setIdiom] = useState('en_US');
+  const [idiom, setIdiom] = useState('pt_BR');
   const [allowNotify, setAllowNotify] = useState(true);
 
   return (

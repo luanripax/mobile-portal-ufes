@@ -46,8 +46,17 @@ export default class UserStore {
     }
 
     @action
+    getUserCourseSubjects = async() => {
+        const {course} = this.userInfo;
+        const data = await FireStoreApi.getUserCourseSubjects(course.code);
+        return data;
+    }
+
+    @action
     getRequestedDocumentURL = async(document: string) => {
         const data = await CloudStorageApi.getDocumentURL(this.userName, document);
         return data;
     };
+
+    
 }

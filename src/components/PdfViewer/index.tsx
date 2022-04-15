@@ -28,7 +28,8 @@ export function PdfViewer({ navigation, route }) {
       setUrl(url);
       setLoading(false);
     } catch (err) {
-      showError(err.message);
+      showError('Não foi possível carregar o documento');
+      navigation.goBack();
     }
   }
 

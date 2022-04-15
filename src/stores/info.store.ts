@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import { action, computed, observable, runInAction } from 'mobx';
 import * as FireStoreApi from '../api/firestore/firestore.api';
 
@@ -51,6 +52,18 @@ export default class InfoStore {
             this.collegiateNews[id].liked = false;
             this.collegiateNews[id].likes = 10;
         })
+    }
+
+    @action
+    getCourseList = async() => {
+        const data = await FireStoreApi.getCourseList();
+        return data;
+    }
+
+    @action
+    getDepartmentList = async() => {
+        const data = await FireStoreApi.getDepartmentList();
+        return data;
     }
 
 }

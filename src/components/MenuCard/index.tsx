@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useEffect } from 'react';
 import { Image } from 'react-native';
-import { Formik, FormikProps } from 'formik';
 import {
   Container,
   Title,

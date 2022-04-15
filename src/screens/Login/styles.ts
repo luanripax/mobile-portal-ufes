@@ -2,6 +2,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Button as ButtonComponent } from '../../components/Button';
+import { getTheme } from '../../hooks/settings';
 
 export const Container = styled.View`
     flex: 1;

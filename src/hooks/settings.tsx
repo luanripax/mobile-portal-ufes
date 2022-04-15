@@ -3,8 +3,7 @@ import React, {
   ReactNode,
   useContext,
   useState,
-  SetStateAction,
-  Dispatch
+  useEffect
 } from 'react';
 
 const SettingContext = createContext({
@@ -17,10 +16,18 @@ interface SettingProviderProps {
   children: ReactNode;
 }
 
+let theme = 'dark';
+
+const getTheme = () => theme;
+
 function SettingProvider({ children }: SettingProviderProps) {
   const [appTheme, setAppTheme] = useState('dark');
   const [idiom, setIdiom] = useState('pt_BR');
   const [allowNotify, setAllowNotify] = useState(true);
+
+  useEffect(() => {
+    theme = appTheme;
+  },[appTheme])
 
   return (
     <SettingContext.Provider
@@ -43,4 +50,4 @@ function useSetting() {
   return context;
 }
 
-export { SettingProvider, useSetting };
+export { SettingProvider, useSetting, getTheme };

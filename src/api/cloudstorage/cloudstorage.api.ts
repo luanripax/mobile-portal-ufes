@@ -15,3 +15,4 @@ export const getDocumentURL = async (userName: string, document: string) => {
         throw new ResponseError(error);
     }
 };
+

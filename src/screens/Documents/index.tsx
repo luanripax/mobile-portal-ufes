@@ -1,8 +1,5 @@
 import React from 'react';
-import { Header } from '../../components/Header';
-import CategoryButton from '../../components/CategoryButton';
 import { FlatList } from 'react-native';
-import getIcon from '../../utils/icons';
 
 import {
   Container,
@@ -11,18 +8,24 @@ import {
   CategoryButtonFC
 } from './styles';
 
+interface CategoryProps {
+  id: string;
+  title: string;
+  tag: string;
+  action: string;
+}
+
 export function Documents({ navigation }) {
   const navigateToScreen = (screen: string, tag: string) => {
     navigation.navigate(screen, { tag: tag });
   };
 
   const showDocument = (tag: string) => {
-    // buscar e titulo através da tag
-    const docTitle = DATA.find((item) => item.tag === tag);
+    const docTitle = Categories.find((item) => item.tag === tag);
     navigation.navigate('PdfViewer', { title: docTitle.title, tag });
   };
 
-  const handleAction = (item) => {
+  const handleAction = (item: CategoryProps) => {
     const action =
       item.action === 'navigate'
         ? navigateToScreen('DocumentSelect', item.tag)
@@ -30,7 +33,7 @@ export function Documents({ navigation }) {
     return action;
   };
 
-  const DATA = [
+  const Categories = [
     {
       id: '1',
       title: 'Identidade UFES',
@@ -76,7 +79,7 @@ export function Documents({ navigation }) {
       <HeaderComponent title="Documentos" />
       <ContentWrapper>
         <FlatList
-          data={DATA}
+          data={Categories}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           scrollEnabled={false}

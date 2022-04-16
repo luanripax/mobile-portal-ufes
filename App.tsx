@@ -31,6 +31,7 @@ import { Provider } from 'mobx-react';
 import store from './src/stores';
 import FlashMessage from "react-native-flash-message";
 
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,

@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { StackHeader } from '../../components/StackHeader';
 import { Button as ButtonRecharge } from '../../components/Button';
-
+import { getTheme } from '../../hooks/settings';
 
 export const Container = styled.View`
     flex: 1;
@@ -42,11 +42,12 @@ export const ButtonContainer = styled.View`
     padding-horizontal: 20px;
 `;
 
-export const Button = styled(ButtonRecharge).attrs({color: '#34AA71', title: "Recarregar"})`
+export const Button = styled(ButtonRecharge).attrs({ title: "Recarregar"})`
     padding: 15px 50px;
     width: 100%;
     align-items: center;
     border-radius: 5px;
+    background-color: ${({ theme }) => theme.colors[getTheme()].main_green};
 `;
 
 export const ButtonLabel = styled.Text`

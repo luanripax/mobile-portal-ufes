@@ -23,6 +23,7 @@ import {
   Icon
 } from './styles';
 import { useSetting } from '../../hooks/settings';
+import { StackActions, CommonActions } from '@react-navigation/native';
 
 export function Settings({ navigation, route }) {
   const render = ({ item, index }) => {
@@ -46,7 +47,12 @@ export function Settings({ navigation, route }) {
   const handleLogout = () => {
     //navigation.setOptions({ state: isDark, toggle: toggleTheme });
     //wconsole.log(route);
-    navigation.navigate('Login');
+    //navigation.navigate('Login');
+    navigation.dispatch(CommonActions.reset({
+      routes: [
+        { name: 'Login' },
+      ],
+    }));
   };
 
   const toggleSwitch = () => setAllowNotify((previousState) => !previousState);

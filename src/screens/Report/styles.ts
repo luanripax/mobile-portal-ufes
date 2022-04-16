@@ -6,6 +6,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Switch, Platform} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { Button as ButtonComponent } from '../../components/Button';
 
 export const Container = styled.View`
     flex: 1;
@@ -95,7 +96,7 @@ export const OfferType = styled.Text`
     font-size: ${hp(2.4)}px;
 `;
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled(ButtonComponent)`
     background-color:#b51b28;
     border-radius: 5px;
     align-items: center;

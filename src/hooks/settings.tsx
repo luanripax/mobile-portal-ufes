@@ -16,12 +16,12 @@ interface SettingProviderProps {
   children: ReactNode;
 }
 
-let theme = 'dark';
+let theme = 'light';
 
 const getTheme = () => theme;
 
 function SettingProvider({ children }: SettingProviderProps) {
-  const [appTheme, setAppTheme] = useState('dark');
+  const [appTheme, setAppTheme] = useState('light');
   const [idiom, setIdiom] = useState('pt_BR');
   const [allowNotify, setAllowNotify] = useState(true);
 

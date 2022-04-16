@@ -5,7 +5,13 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.luanripax.mobileportalufes"
+    }
   },
-  "name": "mobile-portal-ufes"
+  "name": "mobile-portal-ufes",
+  "android": {
+    "googleServicesFile": "./google-services.json"
+  }
 }

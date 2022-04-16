@@ -21,6 +21,8 @@ import {
   ButtonContainer,
 } from './styles';
 import { StackActions, CommonActions } from '@react-navigation/native';
+import theme from '../../styles/theme';
+import { getTheme } from '../../hooks/settings';
 
 const Login = ({navigation}) => {
   const { user, info } = useStores();
@@ -33,7 +35,6 @@ const Login = ({navigation}) => {
       await user.getUserInfo();
       await info.getGeneralInfo();
       navigation.dispatch(CommonActions.reset({
-        index: 1,
         routes: [
           { name: 'Routes' },
         ],
@@ -46,7 +47,7 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <KeyboardAwareScrollView style={{ backgroundColor: '#1C1C1C' }}>
+    <KeyboardAwareScrollView style={{ backgroundColor: theme.colors[getTheme()].background_secondary }}>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}

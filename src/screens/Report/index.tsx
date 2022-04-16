@@ -13,7 +13,7 @@ import { useStores } from '../../hooks/useStores';
 import { showError } from '../../utils/flashMessages';
 import getSubjectIcon from '../../utils/subjectIcons';
 import { DropDown } from '../../components/DropDown';
-import { Button } from '../../components/Button';
+import { Button } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 export function Report({navigation}) {
@@ -56,7 +56,6 @@ export function Report({navigation}) {
       </View>
       <Button
         title="Visualizar PDF"
-        color="#b51b28"
         onPress={handlePress}
       />
     </BodyWrapper>

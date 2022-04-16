@@ -11,8 +11,7 @@ import {
 import { useStores } from '../../hooks/useStores';
 import { showError } from '../../utils/flashMessages';
 import { DropDown } from '../../components/DropDown';
-import { Button } from '../../components/Button';
-
+import { Button } from './styles';
 export function Offer({navigation}) {
 
   const { user, info } = useStores();
@@ -110,7 +109,7 @@ export function Offer({navigation}) {
             />
             </If>
         </View>
-        <Button title="Visualizar PDF" color="#b51b28" onPress={handlePress}/>
+        <Button title="Visualizar PDF" onPress={handlePress}/>
         </BodyWrapper>
   </Container>
   );

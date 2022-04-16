@@ -5,17 +5,35 @@ export default {
             //background_secondary: '#23272a',
             background_secondary: '#1C1C1C',
 
+            main_green: '#34AA71',
+
             select: '#7289da',
             success: '#03B252',
             failure: 'red',
+
+            main_text: 'white',
+
+            label_input: '#D1D1D1',
+            background_input: '#666666',
+
+            pdf_button: '',
 
 
         },
 
         light: {
             background_primary: '#FFFFFF',
+            background_secondary: '#FEFEFE',
             main_dark: '#3E4248',
-            main_green: '#1D8E3E'
+            main_green: '#1D8E3E',
+
+            main_text: '#2F2F2F',
+
+            label_input: '#2F2F2F',
+            background_input: '#E1E1E1',
+
+            pdf_button: '',
+
             
         }
 

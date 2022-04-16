@@ -1,22 +1,23 @@
 import { TextInput } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { getTheme } from '../../hooks/settings';
 
 export const Container = styled.View`
     margin-top: 20px;
 `;
 
 export const Label = styled.Text`
-    color: #D1D1D1;
+    color: ${({theme}) => theme.colors[getTheme()].label_input}
 `;
 
 export const InputText = styled(TextInput).attrs({placeholderTextColor: '#9B9B9D'})`
-    background-color: #666666;
+    background-color: ${({theme}) => theme.colors[getTheme()].background_input};
     border-radius: 5px;
     margin-top: 10px;
     height: ${RFValue(45)}px;
     padding-left: 10px;
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};;
 `;
 
 export const Error = styled.Text`

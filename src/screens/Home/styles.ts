@@ -14,10 +14,13 @@ export const Container = styled.ScrollView`
 
 export const Header = styled.View`
     background-color: ${({theme}) => theme.colors.dark.background_secondary};
-    height: ${hp(23) + getBottomSpace()/2.5}px;
+    /*height: ${hp(23) + getBottomSpace()/2.5}px;
     /* superior | direita | inferior | esquerda */
-    padding: 50px 20px 0px 20px;
+    /*padding: 50px 20px 0px 20px;
     /*ios: padding: 100px 20px 0px 20px; */
+    padding-vertical: ${hp(2)}px;
+    padding-horizontal: 20px;
+    padding-top: ${hp(5.7) - getBottomSpace()/3}px;
 `;
 
 export const Title = styled.Text`
@@ -36,7 +39,7 @@ export const PersonalInfo = styled.View`
 
 export const Icon = styled(Feather)`
     color: grey;
-    font-size: ${RFValue(20)}px;
+    font-size: ${hp(3.1)}px;
 `;
 
 export const CourseInfo = styled.View`

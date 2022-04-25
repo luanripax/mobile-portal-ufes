@@ -3,7 +3,6 @@ import { FlatList, View, Text, ScrollView, SafeAreaView, ActivityIndicator } fro
 import { StackHeader } from '../../components/StackHeader';
 import If from '../../components/If';
 import { locale } from '../../locale';
-
 import {
   Container,
   ContentWrapper,
@@ -20,7 +19,6 @@ import getSubjectIcon from '../../utils/subjectIcons';
 export function SubjectProgress() {
   
   const { user } = useStores();
-  const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   const renderSubject = ({ item }) => (

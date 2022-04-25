@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mobile-portal-ufes",
+    "name": "Portal do Aluno",
     "slug": "mobile-portal-ufes",
     "version": "1.0.0",
     "assetBundlePatterns": [
@@ -10,7 +10,19 @@
       "package": "com.luanripax.mobileportalufes"
     }
   },
-  "name": "mobile-portal-ufes",
+  "plugins": [
+    [
+      "expo-notifications",
+      {
+        "icon": "tick.png",
+        "color": "#ffffff",
+        "sounds": [
+          "./local/assets/notification-sound.wav",
+          "./local/assets/notification-sound-other.wav"
+        ]
+      }
+    ]
+  ],
   "android": {
     "googleServicesFile": "./google-services.json"
   }

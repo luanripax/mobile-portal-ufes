@@ -18,7 +18,8 @@ import {
 
 export function RU({navigation}) {
   
-  const { info } = useStores();
+  const { user, info } = useStores();
+  const { userInfo } = user;
 
   return (
     <Container>
@@ -33,7 +34,7 @@ export function RU({navigation}) {
             <BalanceRecharge name="plus-circle" />
           </TouchableOpacity>
         </BalanceHeader>
-        <Balance>R$ 100,00</Balance>
+        <Balance>{userInfo.ru_balance}</Balance>
       </BalanceWrapper>
       <MenuWrapper>
         <MenuCard items={info.RuMenu}/>

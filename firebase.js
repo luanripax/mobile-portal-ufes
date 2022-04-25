@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { collection, query, where, getFirestore,getDocs, onSnapshot, doc} from "firebase/firestore";
+import { schedulePushNotification, registerForPushNotificationsAsync } from "./src/utils/notificationsHelper";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,5 +18,37 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const db = getFirestore();
+const q = query(collection(db, "notifications"));
+const initialized = false;
+
+
+
+
+const noti = async() => {
+  await registerForPushNotificationsAsync();
+}
+
+noti();
+
+const unsubscribe = onSnapshot(q, (snapshot) => {
+  snapshot.docChanges().forEach((change) => {
+    if (change.type === "added") {
+        //console.log("New city: ", change.doc.data().messages.slice(-1).shift());
+        //const data = change.doc.data().messages.slice(-1).shift();
+      //schedulePushNotification(data.title, data.message);
+    }
+    if (change.type === "modified") {
+        console.log("Modified city: ", change.doc.data().messages);
+        const data = change.doc.data().messages.slice(-1).shift();
+      schedulePushNotification(data.title, data.message);
+    }
+    if (change.type === "removed") {
+        //console.log("Removed city: ", change.doc.data().messages);
+    }
+  });
+});
+
 
 export default firebaseConfig;

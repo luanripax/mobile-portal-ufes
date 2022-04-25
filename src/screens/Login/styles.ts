@@ -4,6 +4,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Button as ButtonComponent } from '../../components/Button';
 import { getTheme } from '../../hooks/settings';
 import theme from '../../styles/theme';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const Container = styled.View`
     flex: 1;
@@ -11,7 +12,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-    font-size: ${RFValue(40)}px;
+    font-size: ${hp(5.5)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
     color: ${ ({theme}) => theme.colors[getTheme()].main_text};
     margin-top: ${RFValue(50) + getBottomSpace()}px;
@@ -19,7 +20,7 @@ export const Title = styled.Text`
 `;
 
 export const SubTitle = styled.Text`
-    font-size: ${RFValue(40)}px;
+    font-size: ${hp(5.5)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
     color: ${ ({theme}) => theme.colors[getTheme()].main_text};
     margin-top: ${RFValue(30)}px;
@@ -31,7 +32,7 @@ export const Header = styled.View`
 
 export const FormContainer = styled.View`
     padding-horizontal: 20px;
-    margin-top: 20px;
+    margin-top: ${hp(2)}px;
 `;
 
 export const ButtonContainer = styled.View`
@@ -43,7 +44,7 @@ export const ButtonContainer = styled.View`
 export const Button = styled(ButtonComponent)`
     align-items: center;
     justify-content: center;
-    width: 140px;
-    height: 50px;
-    background-color: ${ ({theme}) => theme.colors[getTheme()].main_green};;
+    width: ${wp(34)}px;
+    background-color: ${ ({theme}) => theme.colors[getTheme()].main_green};
+    padding-vertical: ${hp(2)}px;
 `;

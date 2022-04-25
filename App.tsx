@@ -40,6 +40,8 @@ export default function App() {
 
   initializeApp(firebaseConfig);
 
+  
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }

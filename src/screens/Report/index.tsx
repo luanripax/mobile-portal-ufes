@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
-import { StackHeader } from '../../components/StackHeader';
 import If from '../../components/If';
 import { locale } from '../../locale';
 
@@ -10,11 +9,8 @@ import {
   BodyWrapper,
 } from './styles';
 import { useStores } from '../../hooks/useStores';
-import { showError } from '../../utils/flashMessages';
-import getSubjectIcon from '../../utils/subjectIcons';
 import { DropDown } from '../../components/DropDown';
 import { Button } from './styles';
-import { useNavigation } from '@react-navigation/native';
 
 export function Report({navigation}) {
   

@@ -21,5 +21,15 @@
     "subjects": {
         "math": "Matemática",
         "computer": "Informática"
+    },
+    "pix": {
+        "title": "Pague com a chave PIX abaixo:",
+        "codeLabel": "Chave",
+        "codeExample": "12312-32132-431231-34321"
+    },
+    "billet": {
+        "title": "Boleto gerado com sucesso!",
+        "codeLabel": "Código",
+        "codeExample": "1234123123432421112420000001212"
     }
 }

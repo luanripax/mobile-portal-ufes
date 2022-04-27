@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../../assets/logo.svg';
+import { locale } from '../../locale';
 import { InputForm } from '../../components/InputForm';
-import { StackHeader } from '../../components/StackHeader';
 import { KeyboardAvoidingView, View, Text, Image} from 'react-native';
 import { useFormikContext, FormikProps, Formik } from 'formik';
 import { FormRecharge } from './formValues';
@@ -10,6 +10,11 @@ import { initialValues } from './formValues';
 import { validationSchema } from './validationSchema';
 import { useNavigation } from '@react-navigation/native';
 import Modal from "react-native-modal";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { showWarning } from '../../utils/flashMessages';
+import BouncyCheckboxGroup, {
+  ICheckboxButton,
+} from "react-native-bouncy-checkbox-group";
 import {
   Container,
   Title,
@@ -37,10 +42,33 @@ const Recharge: React.FC = () => {
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [payment, setPayment] = useState('pix');
+
+  const staticData: ICheckboxButton[] = [
+    {
+      id: 0,
+      text: 'PIX',
+      textStyle: { textDecorationLine: "none", color: 'white' },
+      style: {marginBottom: 20, marginTop: 10},
+      fillColor: '#34AA71',
+      unfillColor: 'transparent',
+      iconStyle: { borderColor: 'gray' }
+    },
+    {
+      id: 1,
+      text: 'Boleto',
+      textStyle: { textDecorationLine: "none", color: 'white' },
+      fillColor: '#34AA71',
+      unfillColor: 'transparent',
+      iconStyle: { borderColor: 'gray' }
+    }
+  ];
 
   const onSubmit = (values: FormRecharge) => {
-    console.log(values);
-    setOpen(true);
+    if(payment)
+      setOpen(true);
+    else
+      showWarning('Selecione o método de pagamento');
   };
 
   const handleCopy = () => {
@@ -51,6 +79,10 @@ const Recharge: React.FC = () => {
     setOpen(false);
     setCopied(false);
     navigation.goBack();
+  }
+
+  const handleSelectPayment = (selectedItem: ICheckboxButton) => {
+    selectedItem.text === "PIX" ? setPayment('pix') : setPayment('billet');
   }
 
   return (
@@ -75,18 +107,22 @@ const Recharge: React.FC = () => {
                 autoCapitalize="none"
               />
             </FormContainer>
+            <Title>Selecione a forma de pagamento:</Title>
+            <BouncyCheckboxGroup
+              data={staticData}
+              style={{ flexDirection: "column", marginTop: 20, paddingHorizontal: 20}}
+              onChange={handleSelectPayment}
+            />
             <ButtonContainer>
-              <Button onPress={handleSubmit}>
-                <ButtonLabel>ENTRAR</ButtonLabel>
-              </Button>
+              <Button onPress={handleSubmit} />
             </ButtonContainer>
             <Modal isVisible={open} backdropOpacity={0.9}>
               <ModalWrapper>
-                  <ModalTitle>Boleto gerado com sucesso!</ModalTitle> 
-                  <Image source={RUImages.tick} style={{width: 80, height: 80, alignSelf: 'center', marginTop: 40}} resizeMode='contain' />
-                  <ModalCodeLabel>Código</ModalCodeLabel>
+                  <ModalTitle>{locale(`${payment}.title`)}</ModalTitle> 
+                  <Image source={payment === 'pix' ? RUImages.pix : RUImages.billet} style={{width: 80, height: 80, alignSelf: 'center', marginTop: 40}} resizeMode='contain' />
+                  <ModalCodeLabel>{locale(`${payment}.codeLabel`)}</ModalCodeLabel>
                   <CodeWrapper>
-                    <CodeValue>1234123123432421112420000001212</CodeValue>
+                    <CodeValue>{locale(`${payment}.codeExample`)}</CodeValue>
                   </CodeWrapper>
                   <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 40}}>
                     <CopyButton onPress={handleCopy}>

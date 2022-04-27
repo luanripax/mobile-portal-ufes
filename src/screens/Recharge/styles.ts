@@ -16,7 +16,7 @@ export const Container = styled.View`
 export const Title = styled.Text`
     font-size: ${RFValue(15)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
-    color: white;
+    color: lightgray;
     margin-top: ${RFValue(30)}px;
     padding-horizontal: 20px;
 `;

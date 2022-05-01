@@ -30,6 +30,8 @@ import { Report } from './src/screens/Report';
 import { Provider } from 'mobx-react';
 import store from './src/stores';
 import FlashMessage from "react-native-flash-message";
+import { StatusBar } from 'expo-status-bar';
+import { getTheme } from './src/hooks/settings';
 
 
 export default function App() {
@@ -52,6 +54,7 @@ export default function App() {
     <Provider rootStore={store}>
       <ThemeProvider theme={theme}>
         <SettingProvider>
+          <StatusBar style={getTheme() === 'dark' ? 'light' : 'dark'}/>
           <NavigationContainer theme={{ colors: { background: '#000' } }}>
             <Stack.Navigator
               initialRouteName="Login"

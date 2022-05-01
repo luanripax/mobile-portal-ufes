@@ -10,11 +10,6 @@ export const LoginContainer = ({navigation}) => {
 
     return (
        <>
-         <StatusBar 
-            barStyle={getTheme() === 'dark' ? 'light-content' : 'dark-content'}
-            backgroundColor="transparent"
-            translucent
-         />
          <Login navigation={navigation}/>
        </>
       );

@@ -3,6 +3,7 @@ import { FlatList, View, Text, ScrollView, SafeAreaView, ActivityIndicator } fro
 import { StackHeader } from '../../components/StackHeader';
 import If from '../../components/If';
 import { locale } from '../../locale';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {
   Container,
   ContentWrapper,

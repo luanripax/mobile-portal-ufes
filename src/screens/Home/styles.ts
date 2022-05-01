@@ -6,14 +6,15 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp
   } from 'react-native-responsive-screen';
+  import { getTheme } from '../../hooks/settings';
 
 export const Container = styled.ScrollView`
     flex: 1;
-    background-color: #2c2f33;
+    background-color: ${({theme}) => theme.colors[getTheme()].background_primary};
 `;
 
 export const Header = styled.View`
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     /*height: ${hp(23) + getBottomSpace()/2.5}px;
     /* superior | direita | inferior | esquerda */
     /*padding: 50px 20px 0px 20px;
@@ -26,7 +27,7 @@ export const Header = styled.View`
 export const Title = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: ${RFValue(30)}px;
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
 `;
 
 export const PersonalInfo = styled.View`
@@ -38,7 +39,7 @@ export const PersonalInfo = styled.View`
 `;
 
 export const Icon = styled(Feather)`
-    color: grey;
+    color: ${({theme}) => theme.colors[getTheme()].icon};;
     font-size: ${hp(3.1)}px;
 `;
 
@@ -48,7 +49,7 @@ export const CourseInfo = styled.View`
 export const CourseLabel = styled.Text`
     font-size: ${RFValue(13)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
-    color: ${({theme}) => theme.colors.dark.select};
+    color: ${({theme}) => theme.colors[getTheme()].select};
 `;
 
 export const Course = styled.Text`
@@ -64,20 +65,8 @@ export const ImportantInfo = styled.View`
 export const ImportantLabel = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: ${hp(2.4)}px;
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
     margin-bottom: ${hp(2.5)}px;
-`;
-
-export const BoardInfo = styled.View`
-    padding-horizontal: 20px;
-    margin-top: ${hp(3)}px;
-`;
-
-export const BoardLabel = styled.Text`
-    font-family: ${({theme}) => theme.fonts.primary_400};
-    font-size: ${RFValue(18)}px;
-    color: white;
-    margin-bottom: ${hp(3)}px;
 `;
 
 export const SubjectInfo = styled.View`
@@ -88,16 +77,33 @@ export const SubjectInfo = styled.View`
 export const SubjectLabel = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: ${RFValue(18)}px;
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
+    margin-bottom: ${hp(3)}px;
+`;
+
+export const BoardInfo = styled.View`
+    padding-horizontal: 20px;
+    margin-top: ${hp(3)}px;
+`;
+
+export const BoardLabel = styled.Text`
+    font-family: ${({theme}) => theme.fonts.primary_400};
+    font-size: ${RFValue(18)}px;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
     margin-bottom: ${hp(3)}px;
 `;
 
 export const SContainer = styled.View`
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     border-radius: 5px;
     padding-horizontal: 10px;
     padding-vertical: 10px;
     margin-bottom: 10px;
+`;
+
+export const New = styled.Text`
+    margin-bottom: 10px;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
 `;
 
 export const STitle = styled.Text`

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { View } from 'react-native';
 import {
   Container,
   Title,
@@ -18,11 +18,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 //import ProgressBar from 'react-native-progress/Bar';
 import * as Progress from 'react-native-progress';
 
-interface Props {
-  title: string;
-}
 
-export function SubjectCard({ title, ...props }: Props) {
+export function ProgressCard() {
   const navigation = useNavigation();
 
   const handleGoBack = () => {
@@ -44,7 +41,46 @@ export function SubjectCard({ title, ...props }: Props) {
   }, []);
 
   return (
-    <Container {...props}>
+    <Container>
+
+      <View style={{alignItems: 'center'}}>
+      <Average>Geral</Average>
+      <Progress.Circle
+          progress={0.3}
+          showsText
+          size={80}
+          formatText={(value) => '60%'}
+          color="#03C4A1"
+          indeterminate={load}
+        />
+      </View>
+
+      <View style={{alignItems: 'center'}}>
+      <Abscence>Obrigatórias</Abscence>
+      <Progress.Circle
+          progress={0.6}
+          showsText
+          size={80}
+          formatText={(value) => '50%'}
+          color="#BC6FF1"
+          indeterminate={load}
+        />
+      </View>
+
+      <View style={{alignItems: 'center'}}>
+      <Abscence>Optativas</Abscence>
+      <Progress.Circle
+          progress={0.4}
+          showsText
+          size={80}
+          formatText={(value) => '40%'}
+          color="#C62A88"
+          indeterminate={load}
+        />
+      </View>
+
+
+      {/*
       <LabelWrapper>
         <Average>Geral</Average>
         <Abscence>Obrigatórias</Abscence>
@@ -75,7 +111,7 @@ export function SubjectCard({ title, ...props }: Props) {
           color="#C62A88"
           indeterminate={load}
         />
-      </ContentWrapper>
+        </ContentWrapper>*/}
 
       {/*
       <Abscence>Faltas</Abscence>

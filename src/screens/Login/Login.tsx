@@ -7,8 +7,6 @@ import { FormLogin } from './formValues';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { initialValues } from './formValues';
 import { validationSchema } from './validationSchema';
-import { useNavigation } from '@react-navigation/native';
-import { doc, getDoc, Firestore, getFirestore } from "firebase/firestore";
 import { useStores } from '../../hooks/useStores';
 import { showError } from '../../utils/flashMessages';
 import {
@@ -23,6 +21,7 @@ import {
 import { StackActions, CommonActions } from '@react-navigation/native';
 import theme from '../../styles/theme';
 import { getTheme } from '../../hooks/settings';
+import { StatusBar } from 'expo-status-bar';
 
 const Login = ({navigation}) => {
   const { user, info } = useStores();

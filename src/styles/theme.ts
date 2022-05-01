@@ -18,15 +18,16 @@ export default {
 
             pdf_button: '',
 
-
+            icon: 'grey',
         },
 
         light: {
-            background_primary: '#FFFFFF',
+            background_primary: '#F8F8F8',
             background_secondary: '#FEFEFE',
             main_dark: '#3E4248',
             main_green: '#1D8E3E',
 
+            select: '#1D8E3E',
             main_text: '#2F2F2F',
 
             label_input: '#2F2F2F',
@@ -34,7 +35,7 @@ export default {
 
             pdf_button: '',
 
-            
+            icon: '#2F2F2F'
         }
 
     },

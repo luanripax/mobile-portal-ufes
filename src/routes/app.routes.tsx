@@ -8,6 +8,8 @@ import { Documents } from '../screens/Documents';
 import  Feed  from '../screens/Feed';
 import { RU } from '../screens/RU';
 import Login from '../screens/Login/Login';
+import { getTheme } from '../hooks/settings';
+import theme from '../styles/theme';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -16,11 +18,11 @@ export function AppRoutes() {
     <Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#7289da',
+        tabBarActiveTintColor: theme.colors[getTheme()].select,
         tabBarInactiveTintColor: 'grey',
         tabBarStyle: {
           // backgroundColor: '#23272a',
-          backgroundColor: '#1C1C1C',
+          backgroundColor: theme.colors[getTheme()].background_secondary,
           borderTopWidth: 0
         }
       }}

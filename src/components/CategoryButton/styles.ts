@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
 import {Feather} from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
+import { getTheme } from '../../hooks/settings';
 
 export const Container = styled(RectButton)`
     height: 60px;
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     border-radius: 5px;
 
     flex-direction: row;

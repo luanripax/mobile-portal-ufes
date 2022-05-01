@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native';
 import CategoryButton from '../../components/CategoryButton';
-import { SubjectCard } from '../../components/SubjectCard';
+import { ProgressCard } from '../../components/ProgressCard';
 import { useStores } from '../../hooks/useStores';
 import {
   Container,
@@ -30,7 +30,8 @@ import {
   AbscenceContainer,
   AbscenceLabel,
   AbscenceValue,
-  STitleContainer
+  STitleContainer,
+  New
 } from './styles';
 import If from '../../components/If';
 
@@ -54,11 +55,6 @@ export function Home({ navigation }) {
 
   return (
     <Container>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
       <Header>
         <PersonalInfo>
           <Title>{`Olá, ${userInfo.firstname}`}</Title>
@@ -78,13 +74,13 @@ export function Home({ navigation }) {
         <CategoryButton title="Solicitação de matrícula" icon="registry" />
       </ImportantInfo>
 
-      <SubjectInfo>
-        <SubjectLabel>Mural</SubjectLabel>
+      <BoardInfo>
+        <BoardLabel>Mural</BoardLabel>
         <If condition={!openBoard}>
           <SContainer>
-            <Text style={{ color: 'white', marginBottom: 10 }}>
+            <New>
               {boardNews[0].new}
-            </Text>
+            </New>
             <TouchableOpacity onPress={() => setOpenBoard(true)}>
               <Icon name="chevron-down" />
             </TouchableOpacity>
@@ -94,19 +90,19 @@ export function Home({ navigation }) {
         <If condition={openBoard}>
           <SContainer>
             {boardNews.map((item) => (
-              <Text key={item.id} style={{ color: 'white', marginBottom: 20 }}>{item.new}</Text>
+              <New key={item.id} style={{ marginBottom: 20 }}>{item.new}</New>
             ))}
             <TouchableOpacity onPress={() => setOpenBoard((old) => !old)}>
               <Icon name="chevron-up" />
             </TouchableOpacity>
           </SContainer>
         </If>
-      </SubjectInfo>
-
-      <BoardInfo>
-        <BoardLabel>Progresso</BoardLabel>
-        <SubjectCard />
       </BoardInfo>
+
+      <SubjectInfo>
+        <SubjectLabel>Progresso</SubjectLabel>
+        <ProgressCard />
+      </SubjectInfo>
     </Container>
   );
 }

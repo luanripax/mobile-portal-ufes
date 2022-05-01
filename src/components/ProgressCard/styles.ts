@@ -4,14 +4,17 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Feather } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { getTheme } from '../../hooks/settings';
 
 const {width} = Dimensions.get('window');
 
 export const Container = styled.View`
-    background-color: ${({theme})=> theme.colors.dark.background_secondary};
+    background-color: ${({theme})=> theme.colors[getTheme()].background_secondary};
     border-radius: 5px;
     padding-horizontal: 10px;
     padding-vertical: 10px;
+    flex-direction: row;
+    justify-content: space-around;
 `;
 
 export const Title = styled.Text`
@@ -21,10 +24,12 @@ export const Title = styled.Text`
 
 export const Abscence = styled.Text`
     color: grey;
+    margin-bottom: 15px;
 `;
 
 export const Average = styled.Text`
     color: grey;
+    margin-bottom: 15px;
 `;
 
 export const LabelWrapper = styled.View`

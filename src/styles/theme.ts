@@ -9,6 +9,7 @@ export default {
 
             select: '#7289da',
             success: '#03B252',
+            error: '#D95858',
             failure: 'red',
 
             main_text: 'white',
@@ -22,12 +23,13 @@ export default {
         },
 
         light: {
-            background_primary: '#F8F8F8',
+            background_primary: '#F5F5F5',
             background_secondary: '#FEFEFE',
             main_dark: '#3E4248',
             main_green: '#1D8E3E',
 
             select: '#1D8E3E',
+            error: '#D95858',
             main_text: '#2F2F2F',
 
             label_input: '#2F2F2F',

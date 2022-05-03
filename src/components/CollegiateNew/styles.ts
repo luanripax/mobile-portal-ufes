@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import theme from "../../styles/theme";
 interface IconProps {
     state: boolean;
 }
@@ -26,7 +26,7 @@ export const PostedContent = styled.Text`
 `;
 
 export const HeartIcon = styled(MaterialCommunityIcons)<IconProps>`
-    color: ${({state}) => state ? 'red' : 'grey'};
+    color: ${({state}) => state ? theme.colors.dark.error : 'grey'};
     font-size: 15px;
 `;
 

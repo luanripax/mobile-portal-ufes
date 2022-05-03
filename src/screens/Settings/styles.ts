@@ -54,7 +54,7 @@ export const LogoutLabel = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: ${hp(2)}px;
     text-align: center;
-    color: red;
+    color: ${({ theme }) => theme.colors.dark.error};
 `;
 
 export const SwitchButton = styled(Switch)`

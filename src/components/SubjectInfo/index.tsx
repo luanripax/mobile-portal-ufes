@@ -21,7 +21,7 @@ import FingerPrint from '../../assets/fingerprint.svg';
 import Calendar from '../../assets/calendar.svg';
 import Books from '../../assets/books.svg';
 import Subject from '../../assets/subjects.svg';
-import { Text, View } from "react-native";
+import theme from "../../styles/theme";
 
 const iconComponents = {
     registry: <Clipboard />,
@@ -55,11 +55,11 @@ const SubjectInfo: FC<Props> = ({
         let color = '';
         const percentage = absences/maxAbsences;
         if(percentage <= 0.25 || percentage < 0.5)
-            color = 'green';
+            color = theme.colors.dark.success;
         if(percentage >= 0.5)
             color = 'orange'
         if(percentage >= 0.75)
-            color = 'red'
+            color = theme.colors.dark.error;
         return color;
     }
 

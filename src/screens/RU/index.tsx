@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
 import { MenuCard } from '../../components/MenuCard';
 import { useStores } from '../../hooks/useStores';
+import { Updater } from '../../components/Updater';
 import {
   Container,
   MainHeader,
@@ -20,6 +21,8 @@ export function RU({navigation}) {
   
   const { user, info } = useStores();
   const { userInfo } = user;
+
+  const [,setUpdate] = useState(false);
 
   return (
     <Container>
@@ -40,6 +43,7 @@ export function RU({navigation}) {
         <MenuCard items={info.RuMenu}/>
       </MenuWrapper>
       </ScrollView>
+      <Updater update={setUpdate} />
     </Container>
   );
 }

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  StatusBar,
   TouchableOpacity,
-  ScrollView,
-  Text,
-  View
 } from 'react-native';
 import CategoryButton from '../../components/CategoryButton';
 import { ProgressCard } from '../../components/ProgressCard';
@@ -25,39 +21,23 @@ import {
   SubjectInfo,
   SubjectLabel,
   SContainer,
-  STitle,
-  SContent,
-  AbscenceContainer,
-  AbscenceLabel,
-  AbscenceValue,
-  STitleContainer,
   New
 } from './styles';
 import If from '../../components/If';
-import { useSetting } from '../../hooks/settings';
+import { Updater } from '../../components/Updater';
 
 export function Home({ navigation }) {
 
   const { user, info } = useStores();
-  const {appTheme} = useSetting();
   const { boardNews } = info;
   const { userInfo } = user;
 
   const [openBoard, setOpenBoard] = useState(false);
-  const [update, setUpdate] = useState(false);
-
-  const data = {
-    labels: ['Optativas', 'Obrigatórias', 'Total'], // optional
-    data: [0.8, 0.6, 0.4]
-  };
+  const [,setUpdate] = useState(false);
 
   const handleNavigate = () => {
     navigation.navigate('Settings');
   };
-
-  useEffect(() => {
-    setUpdate(old => !old);
-  }, [appTheme]);
 
   return (
     <Container>
@@ -109,6 +89,8 @@ export function Home({ navigation }) {
         <SubjectLabel>Progresso</SubjectLabel>
         <ProgressCard />
       </SubjectInfo>
+
+      <Updater update={setUpdate}/>
     </Container>
   );
 }

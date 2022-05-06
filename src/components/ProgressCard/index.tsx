@@ -46,7 +46,7 @@ export function ProgressCard() {
       <View style={{alignItems: 'center'}}>
       <Average>Geral</Average>
       <Progress.Circle
-          progress={0.3}
+          progress={0.6}
           showsText
           size={80}
           formatText={(value) => '60%'}
@@ -58,7 +58,7 @@ export function ProgressCard() {
       <View style={{alignItems: 'center'}}>
       <Abscence>Obrigatórias</Abscence>
       <Progress.Circle
-          progress={0.6}
+          progress={0.5}
           showsText
           size={80}
           formatText={(value) => '50%'}

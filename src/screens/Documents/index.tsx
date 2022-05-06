@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import {
@@ -8,6 +8,8 @@ import {
   CategoryButtonFC
 } from './styles';
 
+import { Updater } from '../../components/Updater';
+
 interface CategoryProps {
   id: string;
   title: string;
@@ -16,6 +18,9 @@ interface CategoryProps {
 }
 
 export function Documents({ navigation }) {
+  
+  const [,setUpdate] = useState(false);
+
   const navigateToScreen = (screen: string, tag: string) => {
     navigation.navigate(screen, { tag: tag });
   };
@@ -85,6 +90,7 @@ export function Documents({ navigation }) {
           scrollEnabled={false}
         />
       </ContentWrapper>
+      <Updater update={setUpdate} />
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Platform } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,11 +10,16 @@ import { RU } from '../screens/RU';
 import Login from '../screens/Login/Login';
 import { getTheme } from '../hooks/settings';
 import theme from '../styles/theme';
+import { Updater } from '../components/Updater';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export function AppRoutes() {
+  
+  const [,setUpdate] = useState(false);
+
   return (
+    <>
     <Navigator
       screenOptions={{
         headerShown: false,
@@ -76,5 +81,7 @@ export function AppRoutes() {
         }}
       />
     </Navigator>
+    <Updater update={setUpdate} />
+    </>
   );
 }

@@ -1,9 +1,10 @@
 import { TextInput } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { getTheme } from '../../hooks/settings';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     margin-horizontal: 15px;
     padding-horizontal: 20px;
     padding-vertical: 10px;
@@ -11,7 +12,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
     font-size: ${RFValue(20)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
     margin-bottom: 15px;
@@ -31,7 +32,7 @@ export const ItemLabel = styled.Text`
 `;
 
 export const ItemContent = styled.Text`
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
     font-size: ${RFValue(15)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
 `;

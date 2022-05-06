@@ -1,11 +1,12 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { Header } from '../../components/Header';
+import { getTheme } from '../../hooks/settings';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.dark.background_primary};
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_primary};
 `;
 
 export const MainHeader = styled(Header)`
@@ -13,7 +14,7 @@ export const MainHeader = styled(Header)`
 `;
 
 export const BalanceWrapper = styled.View`
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     padding-horizontal: 20px;
     padding-vertical: 20px;
     margin-horizontal: 15px;
@@ -21,7 +22,7 @@ export const BalanceWrapper = styled.View`
 `;
 
 export const BalanceLabel = styled.Text`
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size:${RFValue(20)}px;
 `;

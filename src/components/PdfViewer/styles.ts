@@ -5,11 +5,12 @@ import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Switch, Platform} from 'react-native';
+import { getTheme } from '../../hooks/settings';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.dark.background_primary};
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_primary};
 `;
 
 export const MainHeader = styled(StackHeader)`

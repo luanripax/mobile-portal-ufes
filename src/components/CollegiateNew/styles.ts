@@ -1,12 +1,14 @@
 import styled from 'styled-components/native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { getTheme } from '../../hooks/settings';
 import theme from "../../styles/theme";
+
 interface IconProps {
     state: boolean;
 }
 
 export const Container = styled.View`
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     padding-horizontal: 20px;
     padding-vertical: 20px;
     border-radius: 5px;
@@ -20,7 +22,7 @@ export const PostedDate = styled.Text`
 `;
 
 export const PostedContent = styled.Text`
-    color: #ffffff;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};;
     margin-top: 5px;
     font-size: 15px;
 `;

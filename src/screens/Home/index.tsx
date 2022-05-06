@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StatusBar,
   TouchableOpacity,
@@ -34,24 +34,30 @@ import {
   New
 } from './styles';
 import If from '../../components/If';
+import { useSetting } from '../../hooks/settings';
 
 export function Home({ navigation }) {
 
   const { user, info } = useStores();
+  const {appTheme} = useSetting();
+  const { boardNews } = info;
+  const { userInfo } = user;
+
+  const [openBoard, setOpenBoard] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   const data = {
     labels: ['Optativas', 'Obrigatórias', 'Total'], // optional
     data: [0.8, 0.6, 0.4]
   };
 
-  const { boardNews } = info;
-  const { userInfo } = user;
-
-  const [openBoard, setOpenBoard] = useState(false);
-
   const handleNavigate = () => {
     navigation.navigate('Settings');
   };
+
+  useEffect(() => {
+    setUpdate(old => !old);
+  }, [appTheme]);
 
   return (
     <Container>

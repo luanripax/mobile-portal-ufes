@@ -3,12 +3,13 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Feather } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
+import { getTheme } from '../../hooks/settings';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const {width} = Dimensions.get('window');
 
 export const Container = styled.View`
-    background-color: ${({theme})=> theme.colors.dark.background_secondary};
+    background-color: ${({theme})=> theme.colors[getTheme()].background_secondary};
     width: 100%;
     height: ${hp(18) - getBottomSpace()/2}px;
 
@@ -19,14 +20,14 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-    color: #ffffff;
+    color: ${({theme})=> theme.colors[getTheme()].main_text};
     font-size: ${hp(2.85)}px;
     text-align: center;
     margin-right: 35px;
 `;
 
 export const Icon = styled(Feather)`
-    color: white;
+    color: ${({theme})=> theme.colors[getTheme()].main_text};;
     font-size: ${hp(3.57)}px;
     margin-left: 10px;
 `;

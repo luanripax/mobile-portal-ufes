@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 import {Feather} from '@expo/vector-icons';
+import { getTheme } from '../../hooks/settings';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
-    background-color: ${({theme}) => theme.colors.dark.background_secondary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_secondary};
     border-radius: 5px;
 
     flex-direction: column;
@@ -14,7 +15,7 @@ export const Container = styled(RectButton)`
 export const Title = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: ${({active}) => active === true ? 20 : 18}px;
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
     margin-left: 10px;
     margin-bottom: 10px;
 `;
@@ -42,7 +43,7 @@ export const InfoWrapper = styled.View`
 
 export const AverageWrapper = styled.View`
     align-items: center;
-    background-color: #111111;
+    background-color: ${getTheme() === 'dark' ? '#111111' : '#f2f2f2'};
     border-radius: 5px;
     padding-horizontal: 30px;
     padding-vertical: 10px;
@@ -50,7 +51,7 @@ export const AverageWrapper = styled.View`
 
 export const AbscenceWrapper = styled.View`
     align-items: center;
-    background-color: #111111;
+    background-color: ${getTheme() === 'dark' ? '#111111' : '#f2f2f2'};
     border-radius: 5px;
     padding-horizontal: 30px;
     padding-vertical: 10px;
@@ -66,7 +67,7 @@ export const AverageLabel = styled.Text`
 export const Average = styled.Text`
     font-family: ${({theme}) => theme.fonts.primary_400};
     font-size: 20px;
-    color: white;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
 `;
 
 export const AbscenceLabel = styled.Text`

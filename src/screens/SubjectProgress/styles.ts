@@ -3,11 +3,12 @@ import styled from 'styled-components/native';
 import { Header } from '../../components/Header';
 import CategoryButton  from '../../components/CategoryButton';
 import SubjectInfo from '../../components/SubjectInfo';
+import { getTheme } from '../../hooks/settings';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({theme}) => theme.colors.dark.background_primary};
+    background-color: ${({theme}) => theme.colors[getTheme()].background_primary};
 `;
 
 export const HeaderComponent = styled(Header)`

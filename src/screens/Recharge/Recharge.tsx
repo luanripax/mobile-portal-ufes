@@ -5,13 +5,13 @@ import { InputForm } from '../../components/InputForm';
 import { KeyboardAvoidingView, View, Text, Image} from 'react-native';
 import { useFormikContext, FormikProps, Formik } from 'formik';
 import { FormRecharge } from './formValues';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { initialValues } from './formValues';
 import { validationSchema } from './validationSchema';
 import { useNavigation } from '@react-navigation/native';
 import Modal from "react-native-modal";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { showWarning } from '../../utils/flashMessages';
+import { getTheme } from '../../hooks/settings';
 import BouncyCheckboxGroup, {
   ICheckboxButton,
 } from "react-native-bouncy-checkbox-group";
@@ -34,7 +34,8 @@ import {
   BackButton,
   BackText,
   CopyText,
-  Icon
+  Icon,
+  KeyBoardAvoidView
 } from './styles';
 import RUImages from '../../assets/index';
 
@@ -48,7 +49,7 @@ const Recharge: React.FC = () => {
     {
       id: 0,
       text: 'PIX',
-      textStyle: { textDecorationLine: "none", color: 'white' },
+      textStyle: { textDecorationLine: "none", color: getTheme() === 'dark' ? 'white' : 'black'},
       style: {marginBottom: 20, marginTop: 10},
       fillColor: '#34AA71',
       unfillColor: 'transparent',
@@ -57,7 +58,7 @@ const Recharge: React.FC = () => {
     {
       id: 1,
       text: 'Boleto',
-      textStyle: { textDecorationLine: "none", color: 'white' },
+      textStyle: { textDecorationLine: "none", color: getTheme() === 'dark' ? 'white' : 'black' },
       fillColor: '#34AA71',
       unfillColor: 'transparent',
       iconStyle: { borderColor: 'gray' }
@@ -86,7 +87,7 @@ const Recharge: React.FC = () => {
   }
 
   return (
-    <KeyboardAwareScrollView style={{ backgroundColor: '#2c2f33' }}>
+    <KeyBoardAvoidView>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -137,7 +138,7 @@ const Recharge: React.FC = () => {
           </Container>
         )}
       </Formik>
-    </KeyboardAwareScrollView>
+    </KeyBoardAvoidView>
   );
 };
 

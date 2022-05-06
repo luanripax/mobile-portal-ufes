@@ -7,16 +7,17 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { StackHeader } from '../../components/StackHeader';
 import { Button as ButtonRecharge } from '../../components/Button';
 import { getTheme } from '../../hooks/settings';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.dark.background_primary};
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_primary};
 `;
 
 export const Title = styled.Text`
     font-size: ${RFValue(15)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
-    color: lightgray;
+    color: ${({theme}) => getTheme() === 'light' ? theme.colors.light.main_text : 'lightgray'};
     margin-top: ${RFValue(30)}px;
     padding-horizontal: 20px;
 `;
@@ -57,7 +58,7 @@ export const ButtonLabel = styled.Text`
 `;
 
 export const ModalWrapper = styled.View`
-    background-color: ${({ theme }) => theme.colors.dark.background_secondary};
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_secondary};
     padding-horizontal: 35px;
     padding-vertical: 30px;
     border-radius: 5px;
@@ -65,7 +66,7 @@ export const ModalWrapper = styled.View`
 
 
 export const ModalTitle = styled.Text`
-    color: white;
+    color: ${({ theme }) => theme.colors[getTheme()].main_text};
     font-size: ${RFValue(18)}px;
 `;
 
@@ -76,7 +77,7 @@ export const ModalCodeLabel = styled.Text`
 `;
 
 export const CodeWrapper = styled.View`
-    background-color: ${({ theme }) => theme.colors.dark.background_primary};
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_primary};
     border-radius: 20px;
     padding-horizontal: 15px;
     padding-vertical: 15px;
@@ -85,7 +86,7 @@ export const CodeWrapper = styled.View`
 
 export const CodeValue = styled.Text`
     text-align: center;
-    color: white;
+    color: ${({ theme }) => theme.colors[getTheme()].main_text};;
 `;
 
 export const ButtonWrapper = styled.View`
@@ -116,4 +117,8 @@ export const CopyText = styled.Text`
 export const Icon = styled(MaterialCommunityIcons)`
     color: #53F1C6;
     font-size: ${RFValue(14)}px;
+`;
+
+export const KeyBoardAvoidView = styled(KeyboardAwareScrollView)`
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_primary};
 `;

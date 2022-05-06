@@ -6,12 +6,13 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Switch, Platform} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { getTheme } from '../../hooks/settings';
 import { Button as ButtonComponent} from '../../components/Button';
 
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.dark.background_primary};
+    background-color: ${({ theme }) => theme.colors[getTheme()].background_primary};
     padding-bottom: ${15 + getBottomSpace()}px;
 `;
 

@@ -2,7 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { Label, DropDown as DropDownPicker } from './styles';
 import { DropDownPickerProps } from 'react-native-dropdown-picker';
+import theme from '../../styles/theme';
+import { getTheme } from '../../hooks/settings';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 type ExtraProps = {
   title: string;

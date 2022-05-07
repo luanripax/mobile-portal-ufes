@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
-import If from '../../components/If';
+import { View } from 'react-native';
 import { locale } from '../../locale';
 
 import {
@@ -8,25 +7,23 @@ import {
   MainHeader,
   BodyWrapper,
 } from './styles';
-import { useStores } from '../../hooks/useStores';
 import { DropDown } from '../../components/DropDown';
 import { Button } from './styles';
 
 export function Report({navigation}) {
   
-  const { user } = useStores();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('history');
   const [items, setItems] = useState([
-    { label: 'Histórico parcial', value: 'history' },
-    { label: 'Grade Horário Individual', value: 'schedule' },
-    { label: 'Currículo de cursos', value: 'curriculum' },
-    { label: 'Comprovante de matrícula provisório', value: 'temp' },
-    { label: 'Ficha Cadastral do Aluno', value: 'register-file' },
-    { label: 'Integralização curricular', value: 'integral' },
-    { label: 'Comprovante de solicitação', value: 'receipt' },
-    { label: 'Atestado de Matrícula', value: 'certificate' },
-    { label: 'Atestado de Reconhecimento', value: 'recognize-certificate' }
+    { label: locale('report.history'), value: 'history' },
+    { label: locale('report.schedule'), value: 'schedule' },
+    { label: locale('report.curriculum'), value: 'curriculum' },
+    { label: locale('report.temp'), value: 'temp' },
+    { label: locale('report.register-file'), value: 'register-file' },
+    { label: locale('report.integral'), value: 'integral' },
+    { label: locale('report.receipt'), value: 'receipt' },
+    { label: locale('report.certificate'), value: 'certificate' },
+    { label: locale('report.recognize-certificate'), value: 'recognize-certificate' }
   ]);
 
   const handlePress = () => {
@@ -35,12 +32,12 @@ export function Report({navigation}) {
 
   return (
     <Container>
-    <MainHeader title="Relatórios" />
+    <MainHeader title={locale('report.title')} />
 
     <BodyWrapper>
       <View>
         <DropDown
-          title="Relatório"
+          title={locale('report.report')}
           maxHeight={500}
           open={open}
           value={value}
@@ -51,7 +48,7 @@ export function Report({navigation}) {
         />
       </View>
       <Button
-        title="Visualizar PDF"
+        title={locale('general.viewPDF')}
         onPress={handlePress}
       />
     </BodyWrapper>

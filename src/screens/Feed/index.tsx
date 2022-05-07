@@ -8,6 +8,7 @@ import { ActivityIndicator, FlatList } from 'react-native';
 import { Updater } from '../../components/Updater';
 
 import { Container, MainHeader, LoadingWrapper } from './styles';
+import { locale } from '../../locale';
 
 const Feed = () => {
 
@@ -43,7 +44,7 @@ const Feed = () => {
   
   return (
     <Container>
-      <MainHeader title="Notícias" />
+      <MainHeader title={locale('general.feed')} />
       <If condition={loading}>
         <LoadingWrapper>
           <ActivityIndicator size="large"/>

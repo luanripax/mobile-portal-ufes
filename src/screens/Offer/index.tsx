@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View} from 'react-native';
+import { View } from 'react-native';
 import If from '../../components/If';
 import { locale } from '../../locale';
-
 import {
   Container,
   MainHeader,
@@ -19,11 +18,11 @@ export function Offer({navigation}) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('mainCourse');
   const [items, setItems] = useState([
-    { label: 'Oferta do seu curso', value: 'mainCourse' },
-    { label: 'Grade de oferta', value: 'offerGrid' },
-    { label: 'Oferta por curso', value: 'filterCourse' },
-    { label: 'Oferta por disciplina de curso', value: 'filterSubject' },
-    { label: 'Oferta por departamento', value: 'filterDepartment' }
+    { label: locale('offer.mainCourse'), value: 'mainCourse' },
+    { label: locale('offer.offerGrid'), value: 'offerGrid' },
+    { label: locale('offer.filterCourse'), value: 'filterCourse' },
+    { label: locale('offer.filterSubject'), value: 'filterSubject' },
+    { label: locale('offer.filterDepartment'), value: 'filterDepartment' }
   ]);
 
   const [openCourse, setOpenCourse] = useState(false);
@@ -58,58 +57,58 @@ export function Offer({navigation}) {
 
   return (
     <Container>
-        <MainHeader title="Oferta - 2022/1" />
+        <MainHeader title={locale('offer.title')} />
 
         <BodyWrapper>
         <View>
             <DropDown
-            title="Tipo de oferta"
-            maxHeight={85}
-            open={open}
-            value={value}
-            items={items}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
+              title={locale('offer.type')}
+              maxHeight={85}
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
             />
             <If condition={value === 'filterCourse'}>
             <DropDown
-                title="Curso"
-                maxHeight={200}
-                open={openCourse}
-                value={valueCourse}
-                items={itemsCourse}
-                setOpen={setOpenCourse}
-                setValue={setValueCourse}
-                setItems={setItemsCourse}
+              title={locale('offer.course')}
+              maxHeight={200}
+              open={openCourse}
+              value={valueCourse}
+              items={itemsCourse}
+              setOpen={setOpenCourse}
+              setValue={setValueCourse}
+              setItems={setItemsCourse}
             />
             </If>
             <If condition={value === 'filterSubject'}>
             <DropDown
-                title="Disciplina"
-                maxHeight={200}
-                open={openSubject}
-                value={valueSubject}
-                items={itemsSubject}
-                setOpen={setOpenSubject}
-                setValue={setValueSubject}
-                setItems={setItemsSubject}
+              title={locale('offer.subject')}
+              maxHeight={200}
+              open={openSubject}
+              value={valueSubject}
+              items={itemsSubject}
+              setOpen={setOpenSubject}
+              setValue={setValueSubject}
+              setItems={setItemsSubject}
             />
             </If>
             <If condition={value === 'filterDepartment'}>
             <DropDown
-                title="Departamento"
-                maxHeight={200}
-                open={openDepartment}
-                value={valueDepartment}
-                items={itemsDepartment}
-                setOpen={setOpenDepartment}
-                setValue={setValueDepartment}
-                setItems={setItemsDepartment}
+              title={locale('offer.department')}
+              maxHeight={200}
+              open={openDepartment}
+              value={valueDepartment}
+              items={itemsDepartment}
+              setOpen={setOpenDepartment}
+              setValue={setValueDepartment}
+              setItems={setItemsDepartment}
             />
             </If>
         </View>
-        <Button title="Visualizar PDF" onPress={handlePress}/>
+        <Button title={locale('general.viewPDF')} onPress={handlePress}/>
         </BodyWrapper>
   </Container>
   );

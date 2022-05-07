@@ -9,6 +9,7 @@ import {
 } from './styles';
 
 import { Updater } from '../../components/Updater';
+import { locale } from '../../locale';
 
 interface CategoryProps {
   id: string;
@@ -41,31 +42,31 @@ export function Documents({ navigation }) {
   const Categories = [
     {
       id: '1',
-      title: 'Identidade UFES',
+      title: locale('documents.identity'),
       tag: 'identity',
       action: 'show'
     },
     {
       id: '2',
-      title: 'Oferta',
+      title: locale('documents.offer'),
       tag: 'offer',
       action: 'navigate'
     },
     {
       id: '3',
-      title: 'Relatórios',
+      title: locale('documents.report'),
       tag: 'report',
       action: 'navigate'
     },
     {
       id: '4',
-      title: 'Calendário acadêmico',
+      title: locale('documents.calendar'),
       tag: 'calendar',
       action: 'show'
     },
     {
       id: '5',
-      title: 'Progresso de disciplinas',
+      title: locale('documents.subjectProgress'),
       tag: 'subject',
       action: 'navigate'
     }
@@ -81,7 +82,7 @@ export function Documents({ navigation }) {
 
   return (
     <Container>
-      <HeaderComponent title="Documentos" />
+      <HeaderComponent title={locale('general.documents')} />
       <ContentWrapper>
         <FlatList
           data={Categories}

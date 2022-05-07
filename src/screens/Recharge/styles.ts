@@ -1,5 +1,3 @@
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { RectButton } from 'react-native-gesture-handler';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
@@ -43,7 +41,7 @@ export const ButtonContainer = styled.View`
     padding-horizontal: 20px;
 `;
 
-export const Button = styled(ButtonRecharge).attrs({ title: "Recarregar"})`
+export const Button = styled(ButtonRecharge)`
     padding: 15px 50px;
     width: 100%;
     align-items: center;

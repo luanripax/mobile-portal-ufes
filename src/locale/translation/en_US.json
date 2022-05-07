@@ -1,6 +1,18 @@
 {
     "general": {
-        "greetings": "Hello"
+        "greetings": "Hello",
+        "course": "Course",
+        "copy": "Copy",
+        "back": "Back",
+        "generalLabel": "General",
+        "mandatoryLabel": "Mandatory",
+        "optionalLabel": "Optional",
+        "home": "Home",
+        "documents": "Documents",
+        "feed": "News",
+        "subjects": "Subjects",
+        "ru": "UR",
+        "viewPDF": "View PDF"
     },
     "settings": {
         "title": "Settings",
@@ -9,6 +21,31 @@
         "notification": "Notification",
         "about": "About",
         "leave": "Logout"
+    },
+    "offer": {
+        "title": "Offer - 2022/1",
+        "type": "Offer type",
+        "course": "Course",
+        "subject": "Subject",
+        "department": "Department",
+        "mainCourse": "Offer from your course",
+        "offerGrid": "Offer Grid",
+        "filterCourse": "Offer by course",
+        "filterSubject": "Offer by course subject",
+        "filterDepartment": "Offer by department"
+    },
+    "report": {
+        "title": "Reports",
+        "report": "Report",
+        "history": "Partial History",
+        "schedule": "Individual Timetable",
+        "curriculum": "Course Curriculum",
+        "temp": "Provisional proof of enrollment",
+        "register-file": "Student Registration Form",
+        "integral": "Payment curriculum",
+        "receipt": "Proof of request",
+        "certificate": "Certificate of Enrollment",
+        "recognize-certificate": "Certificate of Recognition"
     },
     "themes" :{
         "dark": "Dark",
@@ -19,7 +56,66 @@
         "en_US": "English"
     },
     "subjects": {
+        "average": "Average",
+        "absence": "Absences",
         "math": "Math",
         "computer": "IT"
+    },
+    "pix": {
+        "title": "Pay with the following key:",
+        "codeLabel": "Key",
+        "codeExample": "12312-32132-431231-34321"
+    },
+    "billet": {
+        "title": "Billet successfull generated!",
+        "codeLabel": "Code",
+        "codeExample": "1234123123432421112420000001212"
+    },
+    "login": {
+        "title": "Student's Portal",
+        "loginLabel": "Login",
+        "loginPlaceHolder": "Type your username",
+        "passwordLabel": "Password",
+        "passwordPlaceHolder": "Type your password",
+        "buttonLabel": "LOGIN"
+    },
+    "home" : {
+        "importantLabel": "Important",
+        "boardLabel": "Board",
+        "progressLabel": "Progress",
+        "enrollment": "Enrollment request"
+    },
+    "courses": {
+        "11": "Computer Science"
+    },
+    "documents": {
+        "identity": "Identity UFES",
+        "offer": "Offer",
+        "report": "Reports",
+        "calendar": "Academic calendar",
+        "subjectProgress": "Subject progress"
+    },
+    "ru": {
+        "title": "University Restaurant",
+        "rechargeLabel": "Recharge",
+        "rechargeTitle": "Recharge UR",
+        "rechargeAmount": "Type the amount to recharge :",
+        "rechargePayment": "Select payment method :",
+        "balance": "Balance",
+        "menu": "Menu",
+        "salad": "Salad",
+        "meat": "Main plate",
+        "vegetarian": "Option",
+        "accompaniment": "Accompaniment",
+        "garnish": "Garrison"
+    },
+    "error": {
+        "mandatoryField": "Mandatory field",
+        "minRechargeValue": "The minimum value is R$ 1,00",
+        "loadDocument": "The document couldn't be loaded"
+    },
+    "firebase": {
+        "auth/user-not-found": "Username and/or password are incorrect",
+        "auth/wrong-password": "Username and/or password are incorrect"
     }
 }

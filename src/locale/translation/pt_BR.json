@@ -1,6 +1,18 @@
 {
     "general": {
-        "greetings": "Olá"
+        "greetings": "Olá",
+        "course": "Curso",
+        "copy": "Copiar",
+        "back": "Voltar",
+        "generalLabel": "Geral",
+        "mandatoryLabel": "Obrigatórias",
+        "optionalLabel": "Optativas",
+        "home": "Início",
+        "documents": "Documentos",
+        "feed": "Notícias",
+        "subjects": "Disciplinas",
+        "ru": "RU",
+        "viewPDF": "Visualizar PDF"
     },
     "settings": {
         "title": "Configurações",
@@ -9,6 +21,31 @@
         "notification": "Notificações",
         "about": "Sobre",
         "leave": "Sair"
+    },
+    "offer": {
+        "title": "Oferta - 2022/1",
+        "type": "Tipo de oferta",
+        "course": "Curso",
+        "subject": "Disciplina",
+        "department": "Departamento",
+        "mainCourse": "Oferta do seu curso",
+        "offerGrid": "Grade de oferta",
+        "filterCourse": "Oferta por curso",
+        "filterSubject": "Oferta por disciplina de curso",
+        "filterDepartment": "Oferta por departamento"
+    },
+    "report": {
+        "title": "Relatórios",
+        "report": "Relatório",
+        "history": "Histórico parcial",
+        "schedule": "Grade Horário Individual",
+        "curriculum": "Currículo de cursos",
+        "temp": "Comprovante de matrícula provisório",
+        "register-file": "Ficha Cadastral do Aluno",
+        "integral": "Integralização curricular",
+        "receipt": "Comprovante de solicitação",
+        "certificate": "Atestado de Matrícula",
+        "recognize-certificate": "Atestado de Reconhecimento"
     },
     "themes" :{
         "dark": "Escuro",
@@ -19,6 +56,8 @@
         "en_US": "Inglês"
     },
     "subjects": {
+        "average": "Média",
+        "absence": "Faltas",
         "math": "Matemática",
         "computer": "Informática"
     },
@@ -31,5 +70,52 @@
         "title": "Boleto gerado com sucesso!",
         "codeLabel": "Código",
         "codeExample": "1234123123432421112420000001212"
+    },
+    "login": {
+        "title": "Portal do Aluno",
+        "loginLabel": "Login",
+        "loginPlaceHolder": "Digite seu nome de usuário",
+        "passwordLabel": "Senha",
+        "passwordPlaceHolder": "Digite sua senha",
+        "buttonLabel": "ENTRAR"
+    },
+    "home" : {
+        "importantLabel": "Importantes",
+        "boardLabel": "Mural",
+        "progressLabel": "Progresso",
+        "enrollment": "Solicitação de matrícula"
+    },
+    "courses": {
+        "11": "Ciência da computação"
+    },
+    "documents": {
+        "identity": "Identidade UFES",
+        "offer": "Oferta",
+        "report": "Relatórios",
+        "calendar": "Calendário acadêmico",
+        "subjectProgress": "Progresso de disciplinas"
+    },
+    "ru": {
+        "title": "Restaurante Universitário",
+        "rechargeLabel": "Recarregar",
+        "rechargeTitle": "Recarregar RU",
+        "rechargeAmount": "Digite quanto deseja recarregar :",
+        "rechargePayment": "Selecione a forma de pagamento :",
+        "balance": "Saldo",
+        "menu": "Cardápio",
+        "salad": "Salada",
+        "meat": "Prato principal",
+        "vegetarian": "Opção",
+        "accompaniment": "Acompanhamento",
+        "garnish": "Guarnição"
+    },
+    "error": {
+        "mandatoryField": "Campo obrigatório",
+        "minRechargeValue": "O valor mínimo é de R$ 1,00",
+        "loadDocument": "Não foi possível carregar o documento"
+    },
+    "firebase": {
+        "auth/user-not-found": "Nome de usuário e/ou senha estão incorretos",
+        "auth/wrong-password": "Nome de usuário e/ou senha estão incorretos"
     }
 }

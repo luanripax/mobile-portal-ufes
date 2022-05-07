@@ -25,6 +25,7 @@ import {
 } from './styles';
 import If from '../../components/If';
 import { Updater } from '../../components/Updater';
+import { locale } from '../../locale';
 
 export function Home({ navigation }) {
 
@@ -43,25 +44,25 @@ export function Home({ navigation }) {
     <Container>
       <Header>
         <PersonalInfo>
-          <Title>{`Olá, ${userInfo.firstname}`}</Title>
+          <Title>{`${locale('general.greetings')}, ${userInfo.firstname}`}</Title>
           <TouchableOpacity onPress={handleNavigate}>
             <Icon name="settings" />
           </TouchableOpacity>
         </PersonalInfo>
 
         <CourseInfo>
-          <CourseLabel>Curso</CourseLabel>
-          <Course>{userInfo.course.name}</Course>
+          <CourseLabel>{locale('general.course')}</CourseLabel>
+          <Course>{locale(`courses.${userInfo.course.code}`)}</Course>
         </CourseInfo>
       </Header>
 
       <ImportantInfo>
-        <ImportantLabel>Importantes</ImportantLabel>
-        <CategoryButton title="Solicitação de matrícula" icon="registry" />
+        <ImportantLabel>{locale('home.importantLabel')}</ImportantLabel>
+        <CategoryButton title={locale('home.enrollment')}icon="registry" />
       </ImportantInfo>
 
       <BoardInfo>
-        <BoardLabel>Mural</BoardLabel>
+        <BoardLabel>{locale('home.boardLabel')}</BoardLabel>
         <If condition={!openBoard}>
           <SContainer>
             <New>
@@ -86,7 +87,7 @@ export function Home({ navigation }) {
       </BoardInfo>
 
       <SubjectInfo>
-        <SubjectLabel>Progresso</SubjectLabel>
+        <SubjectLabel>{locale('home.progressLabel')}</SubjectLabel>
         <ProgressCard />
       </SubjectInfo>
 

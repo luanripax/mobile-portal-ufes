@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import en_US from './translation/en_US.json';
 import pt_BR from './translation/pt_BR.json';
 import { useSetting, SettingProvider } from '../hooks/settings';
-import { View } from 'react-native';
 
-let language = '';
+let language = 'pt_BR';
 
 export function getDeviceIdiom() {
   if (language === 'en_US') {

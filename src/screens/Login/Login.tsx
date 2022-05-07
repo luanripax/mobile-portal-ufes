@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from '../../assets/logo.svg';
 import { observer } from 'mobx-react';
 import { InputForm } from '../../components/InputForm';
-import { useFormikContext, FormikProps, Formik } from 'formik';
+import { Formik } from 'formik';
 import { FormLogin } from './formValues';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { initialValues } from './formValues';
@@ -18,10 +18,10 @@ import {
   Button,
   ButtonContainer,
 } from './styles';
-import { StackActions, CommonActions } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 import theme from '../../styles/theme';
 import { getTheme } from '../../hooks/settings';
-import { StatusBar } from 'expo-status-bar';
+import { locale } from '../../locale';
 
 const Login = ({navigation}) => {
   const { user, info } = useStores();
@@ -31,8 +31,7 @@ const Login = ({navigation}) => {
     try {
       setLoaded(true);
       await user.login(values.email, values.password);
-      await user.getUserInfo();
-      await info.getGeneralInfo();
+      await Promise.all([user.getUserInfo(), info.getGeneralInfo()]);
       navigation.dispatch(CommonActions.reset({
         routes: [
           { name: 'Routes' },
@@ -40,7 +39,7 @@ const Login = ({navigation}) => {
       }));
       setLoaded(false);
     } catch (err) {
-      showError(err.message);
+      showError(locale(`firebase.${err.code}`));
       setLoaded(false);
     }
   };
@@ -58,12 +57,12 @@ const Login = ({navigation}) => {
             <Header>
               <Title>UFES</Title>
               <Logo />
-              <SubTitle>Portal do Aluno</SubTitle>
+              <SubTitle>{locale('login.title')}</SubTitle>
             </Header>
             <FormContainer>
               <InputForm
-                label="Login"
-                placeholder="Digite seu nome de usuário"
+                label={locale('login.loginLabel')}
+                placeholder={locale('login.loginPlaceHolder')}
                 value={values.email}
                 error={errors.email}
                 handleChange={handleChange('email')}
@@ -71,8 +70,8 @@ const Login = ({navigation}) => {
                 autoCorrect={false}
               />
               <InputForm
-                label="Senha"
-                placeholder="Digite sua senha"
+                label={locale('login.passwordLabel')}
+                placeholder={locale('login.passwordPlaceHolder')}
                 value={values.password}
                 error={errors.password}
                 handleChange={handleChange('password')}
@@ -82,7 +81,7 @@ const Login = ({navigation}) => {
               />
             </FormContainer>
             <ButtonContainer>
-              <Button title='ENTRAR' onPress={handleSubmit} loading={loaded}/>
+              <Button title={locale('login.buttonLabel')} onPress={handleSubmit} loading={loaded}/>
             </ButtonContainer>
           </Container>
         )}

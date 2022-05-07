@@ -16,6 +16,7 @@ import {
   BalanceRecharge,
   MenuWrapper
 } from './styles';
+import { locale } from '../../locale';
 
 export function RU({navigation}) {
   
@@ -26,11 +27,11 @@ export function RU({navigation}) {
 
   return (
     <Container>
-      <MainHeader title="Restaurante Universitário" />
+      <MainHeader title={locale('ru.title')} />
       <ScrollView>
       <BalanceWrapper>
         <BalanceHeader>
-          <BalanceLabel>Saldo</BalanceLabel>
+          <BalanceLabel>{locale('ru.balance')}</BalanceLabel>
           <TouchableOpacity
             onPress={() => navigation.navigate("Recharge")}
           >

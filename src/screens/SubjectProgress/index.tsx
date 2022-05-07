@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
+import { FlatList, ActivityIndicator } from 'react-native';
 import { StackHeader } from '../../components/StackHeader';
 import If from '../../components/If';
 import { locale } from '../../locale';
@@ -16,11 +16,13 @@ import {
 import { useStores } from '../../hooks/useStores';
 import { showError } from '../../utils/flashMessages';
 import getSubjectIcon from '../../utils/subjectIcons';
+import { Updater } from '../../components/Updater';
 
 export function SubjectProgress() {
   
   const { user } = useStores();
   const [loaded, setLoaded] = useState(false);
+  const [,setUpdate] = useState(false);
 
   const renderSubject = ({ item }) => (
     <SubjectInfoFC
@@ -64,7 +66,7 @@ export function SubjectProgress() {
 
   return (
     <Container>
-      <StackHeader title="Disciplinas"/>
+      <StackHeader title={locale('general.subjects')}/>
       <If condition={loaded}>
         <CategoryWrapper >
         <FlatList
@@ -78,6 +80,7 @@ export function SubjectProgress() {
       <If condition={!loaded}>
         <ActivityIndicator size="large" />
       </If>
+      <Updater update={setUpdate} />
     </Container>
   );
 }

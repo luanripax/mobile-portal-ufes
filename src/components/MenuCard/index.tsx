@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from 'react';
+import React from 'react';
 import { Image } from 'react-native';
 import {
   Container,
@@ -10,6 +10,7 @@ import {
   ItemHeader
 } from './styles';
 import RUImages from '../../assets/index';
+import { locale } from '../../locale';
 
 interface ItemProps {
   id: number;
@@ -22,7 +23,7 @@ export function MenuCard({items}) {
 
   return (
     <Container>
-      <Title>Cardápio</Title>
+      <Title>{locale('ru.menu')}</Title>
       <MenuItems>
         {items.map((item: ItemProps) => 
         <Item key={item.id}>
@@ -32,7 +33,7 @@ export function MenuCard({items}) {
               style={{width: 25, height: 25}} 
               resizeMode="contain"
             />
-            <ItemLabel>{item.label}</ItemLabel>
+            <ItemLabel>{locale(`ru.${item.code}`)}</ItemLabel>
           </ItemHeader>
           <ItemContent>{item.content}</ItemContent>
         </Item>)}

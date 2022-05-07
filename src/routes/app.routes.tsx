@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Platform } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import { Home } from '../screens/Home';
 import { Documents } from '../screens/Documents';
 import  Feed  from '../screens/Feed';
 import { RU } from '../screens/RU';
-import Login from '../screens/Login/Login';
 import { getTheme } from '../hooks/settings';
 import theme from '../styles/theme';
 import { Updater } from '../components/Updater';
+import { locale } from '../locale';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -26,17 +24,15 @@ export function AppRoutes() {
         tabBarActiveTintColor: theme.colors[getTheme()].select,
         tabBarInactiveTintColor: 'grey',
         tabBarStyle: {
-          // backgroundColor: '#23272a',
           backgroundColor: theme.colors[getTheme()].background_secondary,
           borderTopWidth: 0
         }
       }}
     >
       <Screen
-        name="Início"
+        name={locale('general.home')}
         component={Home}
         options={{
-          // tabBarStyle:{display: 'none'},
           tabBarIcon: ({ size, color }) => (
             <MaterialIcons name="home" size={size} color={color} />
           )
@@ -44,7 +40,7 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="Documentos"
+        name={locale('general.documents')}
         component={Documents}
         options={{
           tabBarIcon: ({ size, color }) => (
@@ -58,7 +54,7 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="Notícias"
+        name={locale('general.feed')}
         component={Feed}
         options={{
           tabBarIcon: ({ size, color }) => (
@@ -68,7 +64,7 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="RU"
+        name={locale('general.ru')}
         component={RU}
         options={{
           tabBarIcon: ({ size, color }) => (

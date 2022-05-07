@@ -15,22 +15,8 @@ import {
     Abscence
 } from "./styles";
 
-import Clipboard from '../../assets/clipboard.svg';
-import Printer from '../../assets/printer.svg';
-import FingerPrint from '../../assets/fingerprint.svg';
-import Calendar from '../../assets/calendar.svg';
-import Books from '../../assets/books.svg';
-import Subject from '../../assets/subjects.svg';
 import theme from "../../styles/theme";
-
-const iconComponents = {
-    registry: <Clipboard />,
-    report: <Printer />,
-    calendar: <Calendar />,
-    offer: <Books />,
-    identity: <FingerPrint />,
-    subject: <Subject />
-}
+import { locale } from "../../locale";
 
 interface Props {
     title: string;
@@ -71,11 +57,11 @@ const SubjectInfo: FC<Props> = ({
                         <Title>{title}</Title>
                         <InfoWrapper>
                             <AverageWrapper>
-                                <AverageLabel>Média</AverageLabel>
+                                <AverageLabel>{locale('subjects.average')}</AverageLabel>
                                 <Average>{average}</Average>
                            </AverageWrapper>
                            <AbscenceWrapper>
-                                <AbscenceLabel>Faltas</AbscenceLabel>
+                                <AbscenceLabel>{locale('subjects.absence')}</AbscenceLabel>
                                 <Abscence warningColor={getAbsenceWarningColor}>
                                     {`${absences}/${maxAbsences}`}
                                 </Abscence>

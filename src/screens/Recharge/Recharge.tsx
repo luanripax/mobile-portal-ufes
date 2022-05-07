@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import Logo from '../../assets/logo.svg';
 import { locale } from '../../locale';
 import { InputForm } from '../../components/InputForm';
-import { KeyboardAvoidingView, View, Text, Image} from 'react-native';
-import { useFormikContext, FormikProps, Formik } from 'formik';
+import { View, Image} from 'react-native';
+import { Formik } from 'formik';
 import { FormRecharge } from './formValues';
 import { initialValues } from './formValues';
 import { validationSchema } from './validationSchema';
 import { useNavigation } from '@react-navigation/native';
 import Modal from "react-native-modal";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { showWarning } from '../../utils/flashMessages';
 import { getTheme } from '../../hooks/settings';
 import BouncyCheckboxGroup, {
@@ -18,18 +16,15 @@ import BouncyCheckboxGroup, {
 import {
   Container,
   Title,
-  SubTitle,
   Header,
   FormContainer,
   Button,
   ButtonContainer,
-  ButtonLabel,
   ModalTitle,
   ModalCodeLabel,
   CodeWrapper,
   CodeValue,
   ModalWrapper,
-  ButtonWrapper,
   CopyButton,
   BackButton,
   BackText,
@@ -96,8 +91,8 @@ const Recharge: React.FC = () => {
       >
         {({ handleChange, handleSubmit, values, errors, isSubmitting }) => (
           <Container>
-            <Header title='Recarregar RU' />
-            <Title>Digite quanto deseja recarregar:</Title>            
+            <Header title={locale('ru.rechargeTitle')} />
+            <Title>{locale('ru.rechargeAmount')}</Title>            
             <FormContainer>
               <InputForm
                 label=""
@@ -108,14 +103,14 @@ const Recharge: React.FC = () => {
                 autoCapitalize="none"
               />
             </FormContainer>
-            <Title>Selecione a forma de pagamento:</Title>
+            <Title>{locale('ru.rechargePayment')}</Title>
             <BouncyCheckboxGroup
               data={staticData}
               style={{ flexDirection: "column", marginTop: 20, paddingHorizontal: 20}}
               onChange={handleSelectPayment}
             />
             <ButtonContainer>
-              <Button onPress={handleSubmit} />
+              <Button onPress={handleSubmit} title={locale('ru.rechargeLabel')}/>
             </ButtonContainer>
             <Modal isVisible={open} backdropOpacity={0.9}>
               <ModalWrapper>
@@ -127,10 +122,10 @@ const Recharge: React.FC = () => {
                   </CodeWrapper>
                   <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 40}}>
                     <CopyButton onPress={handleCopy}>
-                      {copied ? <Icon name="check"/> : <CopyText>Copiar</CopyText>}
+                      {copied ? <Icon name="check"/> : <CopyText>{locale('general.copy')}</CopyText>}
                     </CopyButton>
                     <BackButton onPress={handleBack}>
-                      <BackText>Voltar</BackText>
+                      <BackText>{locale('general.back')}</BackText>
                     </BackButton>
                     </View>
               </ModalWrapper>

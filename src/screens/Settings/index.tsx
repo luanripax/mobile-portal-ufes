@@ -69,46 +69,6 @@ export function Settings({ navigation, route }) {
   return (
     <Container>
       <MainHeader title={locale('settings.title')} />
-      {/*
-      <DropDownPicker
-        open={open}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        setValue={setValue}
-        setItems={setItems}
-        style={{
-          position: 'absolute',
-          width: 80,
-          height: hp(6),
-          backgroundColor: 'transparent',
-          borderWidth: 0
-        }}
-        containerStyle={{
-          width: 70,
-          position: 'relative',
-          left: wp(83),
-          top: hp(1.2)
-        }}
-        textStyle={{
-          color: 'grey',
-          fontSize: hp(2)
-        }}
-        labelStyle={{
-          color: 'grey',
-          fontSize: hp(2)
-        }}
-        arrowIconStyle={{
-          display: 'none'
-        }}
-        dropDownContainerStyle={{
-          backgroundColor: '#1C1C1C',
-          borderColor: 'grey'
-        }}
-        tickIconStyle={{
-          display: 'none'
-        }}
-      />*/}
       <SettingsWrapper>
         <Setting>
           <Label>{locale('settings.theme')}</Label>

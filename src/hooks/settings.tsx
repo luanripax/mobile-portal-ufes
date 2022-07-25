@@ -6,7 +6,7 @@ import React, {
   useEffect
 } from 'react';
 
-const SettingContext = createContext({
+const SettingContext: any = createContext({
   idiom: 'pt_BR',
   appTheme: 'dark',
   allowNotify: true

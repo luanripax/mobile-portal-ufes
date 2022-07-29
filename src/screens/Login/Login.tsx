@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/logo.svg';
 import { observer } from 'mobx-react';
 import { InputForm } from '../../components/InputForm';
@@ -38,11 +38,24 @@ const Login = ({navigation}) => {
         ],
       }));
       setLoaded(false);
+      user.setToken();
     } catch (err) {
       showError(locale(`firebase.${err.code}`));
       setLoaded(false);
     }
   };
+
+  const checkHasToken = async () => {
+    const result = await user.getHasToken();
+    if(result) {
+      await Promise.all([user.getUserInfo(), info.getGeneralInfo()]);
+      navigation.navigate('Routes');
+    }
+  }
+
+  useEffect(() => {
+    checkHasToken();
+  },[])
 
   return (
     <KeyboardAwareScrollView style={{ backgroundColor: theme.colors[getTheme()].background_secondary }}>

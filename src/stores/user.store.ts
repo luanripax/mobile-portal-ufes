@@ -27,6 +27,9 @@ export default class UserStore {
     @observable
     userSubjects = [];
 
+    @observable
+    hasToken = false;
+
     @action
     login = async(email:string, password:string) => {
         await AuthApi.login(email, password);  
@@ -43,6 +46,23 @@ export default class UserStore {
     getUserSubjects = async() => {
         const data = await FireStoreApi.getUserSubjects(this.userName);
         this.userSubjects = data.subjects;
+    }
+
+    setToken = async () => {
+       await AuthApi.setUserToken(this.userName);
+    }
+
+    clearToken = async() => {
+        await AuthApi.clearToken();
+    }
+
+    @action
+    getHasToken = async () => {
+        const response = await AuthApi.hasValidToken();
+        if(response.result)
+            this.userName = response.username;
+            this.hasToken = true;
+        return response.result;
     }
 
     getUserCourseSubjects = async() => {

@@ -1,6 +1,5 @@
 import UserStore from './user.store';
 import InfoStore from './info.store';
-
 class RootStore {
   user: UserStore;
 
@@ -14,7 +13,6 @@ class RootStore {
 }
 
 const store = new RootStore();
-
 
 export { RootStore, UserStore, InfoStore };
 

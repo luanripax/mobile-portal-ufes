@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home } from '../screens/Home';
+import Home from '../screens/Home';
 import { Documents } from '../screens/Documents';
 import  Feed  from '../screens/Feed';
 import { RU } from '../screens/RU';

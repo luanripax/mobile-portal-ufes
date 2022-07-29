@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   TouchableOpacity,
 } from 'react-native';
@@ -26,8 +26,9 @@ import {
 import If from '../../components/If';
 import { Updater } from '../../components/Updater';
 import { locale } from '../../locale';
+import { observer } from 'mobx-react';
 
-export function Home({ navigation }) {
+const Home = ({ navigation }) => {
 
   const { user, info } = useStores();
   const { boardNews } = info;
@@ -39,7 +40,7 @@ export function Home({ navigation }) {
   const handleNavigate = () => {
     navigation.navigate('Settings');
   };
-
+  
   return (
     <Container>
       <Header>
@@ -52,7 +53,7 @@ export function Home({ navigation }) {
 
         <CourseInfo>
           <CourseLabel>{locale('general.course')}</CourseLabel>
-          <Course>{locale(`courses.${userInfo.course.code}`)}</Course>
+          <Course>{locale(`courses.11`)}</Course>
         </CourseInfo>
       </Header>
 
@@ -95,3 +96,6 @@ export function Home({ navigation }) {
     </Container>
   );
 }
+
+export default observer(Home);
+

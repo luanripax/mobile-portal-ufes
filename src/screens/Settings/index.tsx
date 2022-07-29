@@ -1,12 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, Platform, Switch } from 'react-native';
 import { locale } from '../../locale';
-import { useNavigation } from '@react-navigation/native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from 'react-native-responsive-screen';
-import DropDownPicker from 'react-native-dropdown-picker';
 import {
   Container,
   MainHeader,
@@ -24,6 +18,7 @@ import {
 } from './styles';
 import { useSetting } from '../../hooks/settings';
 import { StackActions, CommonActions } from '@react-navigation/native';
+import { useStores } from '../../hooks/useStores';
 
 export function Settings({ navigation, route }) {
   const render = ({ item, index }) => {
@@ -37,17 +32,12 @@ export function Settings({ navigation, route }) {
     );
   };
 
-  //const navigation = useNavigation();
-  const [isDark, setIsDark] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const { user } = useStores();
   const [update, setUpdate] = useState(false);
   const { appTheme, idiom, allowNotify, setAllowNotify } = useSetting();
 
-  const handleLogout = () => {
-    //navigation.setOptions({ state: isDark, toggle: toggleTheme });
-    //wconsole.log(route);
-    //navigation.navigate('Login');
+  const handleLogout = async() => {
+    await user.clearToken();
     navigation.dispatch(CommonActions.reset({
       routes: [
         { name: 'Login' },

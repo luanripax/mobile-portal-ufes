@@ -8,7 +8,8 @@ export const Container = styled.View`
 `;
 
 export const Label = styled.Text`
-    color: ${({theme}) => theme.colors[getTheme()].label_input}
+    color: ${({theme}) => theme.colors[getTheme()].label_input};
+    font-size: ${RFValue(13)}px;
 `;
 
 export const InputText = styled(TextInput).attrs({placeholderTextColor: '#9B9B9D'})`
@@ -17,7 +18,8 @@ export const InputText = styled(TextInput).attrs({placeholderTextColor: '#9B9B9D
     margin-top: 10px;
     height: ${RFValue(45)}px;
     padding-left: 10px;
-    color: ${({theme}) => theme.colors[getTheme()].main_text};;
+    color: ${({theme}) => theme.colors[getTheme()].main_text};
+    font-size: ${RFValue(13)}px;
 `;
 
 export const Error = styled.Text`

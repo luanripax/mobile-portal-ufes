@@ -15,12 +15,12 @@ export const Title = styled.Text`
     font-size: ${hp(5.5)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
     color: ${ ({theme}) => theme.colors[getTheme()].main_text};
-    margin-top: ${RFValue(50) + getBottomSpace()}px;
+    margin-top: ${RFValue(60) + getBottomSpace()/2}px;
     margin-bottom: ${RFValue(20)}px;
 `;
 
 export const SubTitle = styled.Text`
-    font-size: ${hp(5.5)}px;
+    font-size: ${wp(10)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
     color: ${ ({theme}) => theme.colors[getTheme()].main_text};
     margin-top: ${RFValue(30)}px;
@@ -38,7 +38,7 @@ export const FormContainer = styled.View`
 export const ButtonContainer = styled.View`
     flex: 1;
     align-items: center;
-    margin-top: 40px;
+    margin-top: ${hp(5)}px;
 `;
 
 export const Button = styled(ButtonComponent)`

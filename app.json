@@ -14,7 +14,7 @@
     [
       "expo-notifications",
       {
-        "icon": "tick.png",
+        "icon": "./local/ic_notification.png",
         "color": "#ffffff",
         "sounds": [
           "./local/assets/notification-sound.wav",

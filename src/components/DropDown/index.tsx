@@ -5,9 +5,7 @@ import { DropDownPickerProps } from 'react-native-dropdown-picker';
 import theme from '../../styles/theme';
 import { getTheme } from '../../hooks/settings';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
-
-type ExtraProps = {
+interface ExtraProps {
   title: string;
   maxHeight: number;
 };

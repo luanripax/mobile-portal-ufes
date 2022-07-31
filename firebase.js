@@ -21,31 +21,19 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 const q = query(collection(db, "notifications"));
-const initialized = false;
 
-
-
-
-const noti = async() => {
+const initNotifications = async() => {
   await registerForPushNotificationsAsync();
 }
 
-noti();
+initNotifications();
 
 const unsubscribe = onSnapshot(q, (snapshot) => {
   snapshot.docChanges().forEach((change) => {
-    if (change.type === "added") {
-        //console.log("New city: ", change.doc.data().messages.slice(-1).shift());
-        //const data = change.doc.data().messages.slice(-1).shift();
-      //schedulePushNotification(data.title, data.message);
-    }
     if (change.type === "modified") {
         console.log("Modified city: ", change.doc.data().messages);
         const data = change.doc.data().messages.slice(-1).shift();
       schedulePushNotification(data.title, data.message);
-    }
-    if (change.type === "removed") {
-        //console.log("Removed city: ", change.doc.data().messages);
     }
   });
 });

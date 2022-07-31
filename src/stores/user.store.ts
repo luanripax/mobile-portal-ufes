@@ -53,7 +53,7 @@ export default class UserStore {
     }
 
     clearToken = async() => {
-        await AuthApi.clearToken();
+        await AuthApi.clearToken(this.userName);
     }
 
     @action

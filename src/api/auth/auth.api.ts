@@ -42,9 +42,9 @@ export const hasValidToken = async() => {
   }
 }
 
-export const clearToken = async() => {
+export const clearToken = async(username: string) => {
   try {
-    const token = JWT.encode({exp: Date.now() - 610000}, 'secret-mobile-ufes');
+    const token = JWT.encode({exp: Date.now() - 610000, user: username}, 'secret-mobile-ufes');
     await AsyncStorage.setItem('@storage_token', token);
   } catch (error) {
     throw new ResponseError(error);

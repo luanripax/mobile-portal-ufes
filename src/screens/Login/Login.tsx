@@ -22,6 +22,7 @@ import { CommonActions } from '@react-navigation/native';
 import theme from '../../styles/theme';
 import { getTheme } from '../../hooks/settings';
 import { locale } from '../../locale';
+import { watchRiskNotification } from '../../utils/notificationsHelper';
 
 const Login = ({navigation}) => {
   const { user, info } = useStores();
@@ -46,6 +47,7 @@ const Login = ({navigation}) => {
   };
 
   const checkHasToken = async () => {
+    await watchRiskNotification();
     const result = await user.getHasToken();
     if(result) {
       await Promise.all([user.getUserInfo(), info.getGeneralInfo()]);

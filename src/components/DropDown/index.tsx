@@ -24,7 +24,7 @@ export function DropDown({ title, maxHeight, ...props }: Props) {
           backgroundColor: '#202020',
           borderWidth: 1,
           borderColor: '#1C1C1C',
-          marginBottom: 60
+          marginBottom: 100
         }}
         containerStyle={{
           position: 'relative'

@@ -71,7 +71,7 @@ const Login = ({navigation}) => {
           <Container>
             <Header>
               <Title>UFES</Title>
-              <Logo scaleX={0.85} scaleY={0.85}/>
+              <Logo scaleX={0.90} scaleY={0.90}/>
               <SubTitle>{locale('login.title')}</SubTitle>
             </Header>
             <FormContainer>

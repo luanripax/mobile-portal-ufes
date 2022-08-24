@@ -95,6 +95,8 @@ export const CopyButton = styled.TouchableOpacity`
     padding-horizontal: 45px;
     padding-vertical: 15px;
     border-radius: 5px;
+    width: 45%;
+    align-items: center;
 `;
 
 export const BackButton = styled.TouchableOpacity`
@@ -110,6 +112,7 @@ export const BackText = styled.Text`
 
 export const CopyText = styled.Text`
     color: white;
+    width: 45px;
 `;
 
 export const Icon = styled(MaterialCommunityIcons)`
